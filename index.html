@@ -1,0 +1,2839 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數學自主學習平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+    <script>        
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-primary text-white p-6 shadow-lg">
+            <div class="container mx-auto">
+                <h1 class="text-3xl font-bold mb-2">🧮 數學自主學習平台</h1>
+                <p class="text-blue-100 text-lg">高中數學 • 互動圖表 • 概念學習 • 例題練習</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container mx-auto p-6 max-w-7xl">
+            <!-- Chapter Selection -->
+            <div id="chapterSelect" class="grid md:grid-cols-3 gap-8 mb-8">
+                <div class="chapter-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-blue-200 dark:border-blue-700 transform hover:scale-105" data-chapter="1">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold text-xl">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-800 dark:text-blue-200">第1章</h3>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">一元二次方程</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">探索二次方程的世界，從基本概念到實際應用</p>
+                    <div class="text-sm text-blue-600 dark:text-blue-400">
+                        <span class="inline-block bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded mr-2 mb-2">數系</span>
+                        <span class="inline-block bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded mr-2 mb-2">二次公式</span>
+                        <span class="inline-block bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded mr-2 mb-2">判別式</span>
+                        <span class="inline-block bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded mr-2 mb-2">應用題</span>
+                    </div>
+                </div>
+                
+                <div class="chapter-card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900 dark:to-green-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-green-200 dark:border-green-700 transform hover:scale-105" data-chapter="2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold text-xl">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-green-800 dark:text-green-200">第2章</h3>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">直線方程</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">掌握直線的各種表示方法和幾何關係</p>
+                    <div class="text-sm text-green-600 dark:text-green-400">
+                        <span class="inline-block bg-green-100 dark:bg-green-800 px-2 py-1 rounded mr-2 mb-2">坐標系</span>
+                        <span class="inline-block bg-green-100 dark:bg-green-800 px-2 py-1 rounded mr-2 mb-2">斜率</span>
+                        <span class="inline-block bg-green-100 dark:bg-green-800 px-2 py-1 rounded mr-2 mb-2">直線方程</span>
+                        <span class="inline-block bg-green-100 dark:bg-green-800 px-2 py-1 rounded mr-2 mb-2">相交</span>
+                    </div>
+                </div>
+                
+                <div class="chapter-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-purple-200 dark:border-purple-700 transform hover:scale-105" data-chapter="3">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-white font-bold text-xl">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-purple-800 dark:text-purple-200">第3章</h3>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">函數及其圖像</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">理解函數概念並探索各種函數的圖像特徵</p>
+                    <div class="text-sm text-purple-600 dark:text-purple-400">
+                        <span class="inline-block bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded mr-2 mb-2">函數記法</span>
+                        <span class="inline-block bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded mr-2 mb-2">複合函數</span>
+                        <span class="inline-block bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded mr-2 mb-2">函數圖像</span>
+                        <span class="inline-block bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded mr-2 mb-2">截距</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter Content -->
+            <div id="chapterContent" class="hidden">
+                <!-- Navigation -->
+                <div class="flex flex-wrap items-center gap-4 mb-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
+                    <button id="backBtn" class="flex items-center gap-2 px-6 py-3 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        返回章節選擇
+                    </button>
+                    
+                    <div class="flex flex-wrap gap-3">
+                        <button class="mode-btn px-6 py-3 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold" data-mode="concept">📚 概念學習</button>
+                        <button class="mode-btn px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold" data-mode="example">💡 例題演示</button>
+                        <button class="mode-btn px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold" data-mode="practice">✏️ 練習題</button>
+                    </div>
+                </div>
+
+                <!-- Section Navigation -->
+                <div id="sectionNav" class="mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">選擇學習內容：</h3>
+                    <div class="flex flex-wrap gap-3" id="sectionButtons"></div>
+                </div>
+
+                <!-- Content Area -->
+                <div id="contentArea" class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-700"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // App State
+        let currentChapter = null;
+        let currentSection = null;
+        let currentMode = 'concept';
+        
+        // Interactive Quiz Data
+        const numberQuizQuestions = [
+            {number: "3.14159...", answer: "irrational", explanation: "π 是無理數，因為它是無限不循環小數"},
+            {number: "√9", answer: "natural", explanation: "√9 = 3，是自然數"},
+            {number: "-7", answer: "integer", explanation: "-7 是負整數"},
+            {number: "2/3", answer: "rational", explanation: "2/3 是分數形式，所以是有理數"},
+            {number: "0.5", answer: "rational", explanation: "0.5 = 1/2，是有理數"},
+            {number: "√2", answer: "irrational", explanation: "√2 ≈ 1.414...，是無理數"},
+            {number: "0", answer: "integer", explanation: "0 是整數"},
+            {number: "-3/4", answer: "rational", explanation: "-3/4 是分數形式，所以是有理數"}
+        ];
+        
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+
+        // Data structure for chapters
+        const chapters = {
+            1: {
+                title: "一元二次方程（一）",
+                sections: {
+                    "1.1": "數系",
+                    "1.2": "一元二次方程",
+                    "1.3": "二次公式", 
+                    "1.4": "二次方程的根的性質",
+                    "1.5": "涉及二次方程的簡單應用題"
+                }
+            },
+            2: {
+                title: "直線方程",
+                sections: {
+                    "2.0": "直角坐標系重溫",
+                    "2.1": "直線方程",
+                    "2.2": "直線的相交",
+                    "2.3": "綜合題型"
+                }
+            },
+            3: {
+                title: "函數及其圖像",
+                sections: {
+                    "3.1": "函數的記法",
+                    "3.2": "函數的圖像"
+                }
+            }
+        };
+
+        // Content data
+        const content = {
+            1: {
+                "1.1": {
+                    concept: {
+                        title: "數系",
+                        definitions: [
+                            {
+                                term: "自然數 Natural Numbers",
+                                def: "正整數，即 1、2、3、4、…",
+                                examples: "1, 2, 3, 4, 5, ..."
+                            },
+                            {
+                                term: "整數 Integers", 
+                                def: "即 …、-3、-2、-1、0、1、2、3、…",
+                                examples: "..., -3, -2, -1, 0, 1, 2, 3, ..."
+                            },
+                            {
+                                term: "有理數 Rational Numbers",
+                                def: "可寫成 $\\dfrac{p}{q}$ 的數字，其中 p 及 q 均為整數，且 q ≠ 0",
+                                examples: "1/2, -3/4, 0.25, 2.333..."
+                            },
+                            {
+                                term: "無理數 Irrational Numbers",
+                                def: "不是有理數的數字",
+                                examples: "√2, √5, π, e"
+                            },
+                            {
+                                term: "實數 Real Numbers",
+                                def: "以上所有數字統稱為實數",
+                                examples: "包括所有有理數和無理數"
+                            }
+                        ],
+                        properties: [
+                            "循環小數為有理數",
+                            "有限小數為有理數",
+                            "無理數的小數部分是無限不循環的",
+                            "實數可以在數線上表示"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "判斷數字是否有理數",
+                            problem: "判斷下列數字是否有理數：(a) $-\\dfrac{1}{2}$ (b) $\\dfrac{3}{2}$ (c) π (d) 3.14 (e) √5",
+                            solution: `
+                                <div class="space-y-3">
+                                    <div>(a) $-\\dfrac{1}{2}$：<span class="text-green-600 font-semibold">是有理數</span>（可表示為分數形式）</div>
+                                    <div>(b) $\\dfrac{3}{2}$：<span class="text-green-600 font-semibold">是有理數</span>（已是分數形式）</div>
+                                    <div>(c) π：<span class="text-red-600 font-semibold">不是有理數</span>（無理數）</div>
+                                    <div>(d) 3.14：<span class="text-green-600 font-semibold">是有理數</span>（有限小數）</div>
+                                    <div>(e) √5：<span class="text-red-600 font-semibold">不是有理數</span>（無理數）</div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "循環小數轉換為分數",
+                            problem: "將下列循環小數轉換為分數：(a) $0.\\overline{3}$ (即 0.333333...) (b) $0.\\overline{12}$ (即 0.121212...)",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) $0.\\overline{3}$：</strong></div>
+                                    <div class="ml-4">設 x = 0.333...</div>
+                                    <div class="ml-4">則 10x = 3.333...</div>
+                                    <div class="ml-4">10x - x = 3.333... - 0.333...</div>
+                                    <div class="ml-4">9x = 3</div>
+                                    <div class="ml-4">x = $\\dfrac{3}{9} = \\dfrac{1}{3}$</div>
+                                    <div><strong>(b) $0.\\overline{12}$：</strong></div>
+                                    <div class="ml-4">設 y = 0.121212...</div>
+                                    <div class="ml-4">則 100y = 12.121212...</div>
+                                    <div class="ml-4">100y - y = 12.121212... - 0.121212...</div>
+                                    <div class="ml-4">99y = 12</div>
+                                    <div class="ml-4">y = $\\dfrac{12}{99} = \\dfrac{4}{33}$</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) $\\dfrac{1}{3}$ (b) $\\dfrac{4}{33}$</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "判斷 $\\dfrac{4}{3}$ 是否有理數",
+                            options: ["是", "否"],
+                            answer: 0,
+                            explanation: "$\\dfrac{4}{3}$ 是分數形式，所以是有理數"
+                        },
+                        {
+                            question: "判斷 √4 是否有理數", 
+                            options: ["是", "否"],
+                            answer: 0,
+                            explanation: "√4 = 2，是整數，所以是有理數"
+                        },
+                        {
+                            question: "判斷 $-\\dfrac{1}{2}$ 是否有理數",
+                            options: ["是", "否"],
+                            answer: 0,
+                            explanation: "$-\\dfrac{1}{2}$ 可表示為分數形式，所以是有理數"
+                        },
+                        {
+                            question: "判斷 √7 是否有理數",
+                            options: ["是", "否"],
+                            answer: 1,
+                            explanation: "√7 是無理數，因為7不是完全平方數"
+                        },
+                        {
+                            question: "將循環小數 $0.\\overline{5}$ 轉換為分數的結果是：",
+                            options: ["$\\dfrac{1}{2}$", "$\\dfrac{5}{9}$", "$\\dfrac{5}{10}$", "$\\dfrac{1}{5}$"],
+                            answer: 1,
+                            explanation: "設 x = 0.555..., 則 10x = 5.555..., 所以 9x = 5, x = $\\dfrac{5}{9}$"
+                        }
+                    ]
+                },
+                "1.2": {
+                    concept: {
+                        title: "一元二次方程",
+                        definitions: [
+                            {
+                                term: "一元二次方程 Quadratic Equations",
+                                def: "「一元」即一個未知數，「二次」即方程中最高的次數為2。一般式為 ax² + bx + c = 0，其中 a ≠ 0"
+                            }
+                        ],
+                        properties: [
+                            "因式法 Factor Method：若 x² + bx + c = (x + A)(x + B)，則 x² + bx + c = 0 的根為 -A 及 -B",
+                            "二次方程最多有兩個實根",
+                            "a 係數決定拋物線開口方向：a > 0 向上，a < 0 向下"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "將二次方程改寫成一般式",
+                            problem: "將下列各一元二次方程改寫成一般式：(a) x² + 2x + 3 = 0  (b) 2x² + 3x = 5  (c) 3x² - 5x = 1",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) x² + 2x + 3 = 0：</strong></div>
+                                    <div class="ml-4">已經是一般式，a = 1, b = 2, c = 3</div>
+                                    
+                                    <div><strong>(b) 2x² + 3x = 5：</strong></div>
+                                    <div class="ml-4">移項：2x² + 3x - 5 = 0</div>
+                                    <div class="ml-4">一般式：a = 2, b = 3, c = -5</div>
+                                    
+                                    <div><strong>(c) 3x² - 5x = 1：</strong></div>
+                                    <div class="ml-4">移項：3x² - 5x - 1 = 0</div>
+                                    <div class="ml-4">一般式：a = 3, b = -5, c = -1</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) x² + 2x + 3 = 0  (b) 2x² + 3x - 5 = 0  (c) 3x² - 5x - 1 = 0</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "解二次方程（因式法）",
+                            problem: "解方程 x² + 5x + 6 = 0",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>將左邊因式分解</div>
+                                    <div class="ml-4">x² + 5x + 6 = (x + 2)(x + 3)</div>
+                                    <div><strong>步驟2：</strong>設每個因子等於零</div>
+                                    <div class="ml-4">(x + 2)(x + 3) = 0</div>
+                                    <div class="ml-4">因此 x + 2 = 0 或 x + 3 = 0</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">x = -2 或 x = -3</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "解復雜二次方程",
+                            problem: "解方程 2x² + 3x + 1 = 0",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>尋找因式分解</div>
+                                    <div class="ml-4">需要找到兩個數，相乘得 2×1 = 2，相加得 3</div>
+                                    <div class="ml-4">這兩個數是 2 和 1</div>
+                                    <div><strong>步驟2：</strong>因式分解</div>
+                                    <div class="ml-4">2x² + 3x + 1 = 2x² + 2x + x + 1</div>
+                                    <div class="ml-4">= 2x(x + 1) + 1(x + 1)</div>
+                                    <div class="ml-4">= (2x + 1)(x + 1)</div>
+                                    <div><strong>步驟3：</strong>求解</div>
+                                    <div class="ml-4">(2x + 1)(x + 1) = 0</div>
+                                    <div class="ml-4">2x + 1 = 0  或  x + 1 = 0</div>
+                                    <div class="ml-4">x = -1/2  或  x = -1</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">x = -1/2 或 x = -1</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "將方程 3x² + 2x = 5 改寫成一般式：",
+                            options: ["3x² + 2x - 5 = 0", "3x² + 2x + 5 = 0", "3x² - 2x - 5 = 0", "3x² - 2x + 5 = 0"],
+                            answer: 0,
+                            explanation: "將右邊的 5 移到左邊：3x² + 2x - 5 = 0"
+                        },
+                        {
+                            question: "解方程 x² + 3x + 2 = 0 的根是：",
+                            options: ["x = -1, -2", "x = 1, 2", "x = -1, 2", "x = 1, -2"],
+                            answer: 0,
+                            explanation: "因式分解：(x + 1)(x + 2) = 0，所以 x = -1 或 x = -2"
+                        },
+                        {
+                            question: "解方程 x² - 4x + 3 = 0 的根是：",
+                            options: ["x = 1, 3", "x = -1, -3", "x = 1, -3", "x = -1, 3"],
+                            answer: 0,
+                            explanation: "因式分解：(x - 1)(x - 3) = 0，所以 x = 1 或 x = 3"
+                        },
+                        {
+                            question: "解方程 x² - 81 = 0 的根是：",
+                            options: ["x = ±9", "x = ±3", "x = 9", "x = -9"],
+                            answer: 0,
+                            explanation: "這是平方差：x² - 81 = (x + 9)(x - 9) = 0，所以 x = ±9"
+                        },
+                        {
+                            question: "解方程 4x² + 9x + 5 = 0 的根是：",
+                            options: ["x = -1, -5/4", "x = 1, 5/4", "x = -1, 5/4", "x = 1, -5/4"],
+                            answer: 0,
+                            explanation: "因式分解：(4x + 5)(x + 1) = 0，所以 x = -5/4 或 x = -1"
+                        }
+                    ]
+                },
+                "1.3": {
+                    concept: {
+                        title: "二次公式",
+                        definitions: [
+                            {
+                                term: "二次公式 Quadratic Formula",
+                                def: "對於一般式 ax² + bx + c = 0 (a ≠ 0)，其根為：$x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
+                            },
+                            {
+                                term: "判別式 Discriminant",
+                                def: "Δ = b² - 4ac，用於判斷二次方程根的性質"
+                            }
+                        ],
+                        properties: [
+                            "當 Δ > 0 時，方程有兩個不同的實根",
+                            "當 Δ = 0 時，方程有一個重根（兩個相同的實根）",
+                            "當 Δ < 0 時，方程沒有實根（有兩個共軛複根）",
+                            "二次公式適用於所有二次方程，包括不能因式分解的方程"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "使用二次公式解方程",
+                            problem: "利用二次公式解下列各方程：(a) x² + 5x + 6 = 0  (b) x² - 3x + 2 = 0  (c) 3x² - 5x - 2 = 0",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) x² + 5x + 6 = 0：</strong></div>
+                                    <div class="ml-4">a = 1, b = 5, c = 6</div>
+                                    <div class="ml-4">$x = \\dfrac{-5 \\pm \\sqrt{5^2 - 4(1)(6)}}{2(1)} = \\dfrac{-5 \\pm \\sqrt{25 - 24}}{2} = \\dfrac{-5 \\pm 1}{2}$</div>
+                                    <div class="ml-4">x = -2 或 x = -3</div>
+                                    
+                                    <div><strong>(b) x² - 3x + 2 = 0：</strong></div>
+                                    <div class="ml-4">a = 1, b = -3, c = 2</div>
+                                    <div class="ml-4">$x = \\dfrac{3 \\pm \\sqrt{(-3)^2 - 4(1)(2)}}{2(1)} = \\dfrac{3 \\pm \\sqrt{9 - 8}}{2} = \\dfrac{3 \\pm 1}{2}$</div>
+                                    <div class="ml-4">x = 2 或 x = 1</div>
+                                    
+                                    <div><strong>(c) 3x² - 5x - 2 = 0：</strong></div>
+                                    <div class="ml-4">a = 3, b = -5, c = -2</div>
+                                    <div class="ml-4">$x = \\dfrac{5 \\pm \\sqrt{(-5)^2 - 4(3)(-2)}}{2(3)} = \\dfrac{5 \\pm \\sqrt{25 + 24}}{6} = \\dfrac{5 \\pm 7}{6}$</div>
+                                    <div class="ml-4">x = 2 或 x = -1/3</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) x = -2, -3  (b) x = 1, 2  (c) x = 2, -1/3</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "答案以根式表示",
+                            problem: "解下列各方程，答案以根式表示：(a) 2x² + 3x - 10 = 0  (b) -3x² + 7x + 13 = 0  (c) (x+2)(x+3) = 15",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 2x² + 3x - 10 = 0：</strong></div>
+                                    <div class="ml-4">a = 2, b = 3, c = -10</div>
+                                    <div class="ml-4">Δ = 3² - 4(2)(-10) = 9 + 80 = 89</div>
+                                    <div class="ml-4">$x = \\dfrac{-3 \\pm \\sqrt{89}}{2(2)} = \\dfrac{-3 \\pm \\sqrt{89}}{4}$</div>
+                                    
+                                    <div><strong>(b) -3x² + 7x + 13 = 0：</strong></div>
+                                    <div class="ml-4">a = -3, b = 7, c = 13</div>
+                                    <div class="ml-4">Δ = 7² - 4(-3)(13) = 49 + 156 = 205</div>
+                                    <div class="ml-4">$x = \\dfrac{-7 \\pm \\sqrt{205}}{2(-3)} = \\dfrac{-7 \\pm \\sqrt{205}}{-6} = \\dfrac{7 \\mp \\sqrt{205}}{6}$</div>
+                                    
+                                    <div><strong>(c) (x+2)(x+3) = 15：</strong></div>
+                                    <div class="ml-4">展開：x² + 5x + 6 = 15</div>
+                                    <div class="ml-4">整理：x² + 5x - 9 = 0</div>
+                                    <div class="ml-4">a = 1, b = 5, c = -9</div>
+                                    <div class="ml-4">Δ = 5² - 4(1)(-9) = 25 + 36 = 61</div>
+                                    <div class="ml-4">$x = \\dfrac{-5 \\pm \\sqrt{61}}{2}$</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) $x = \\dfrac{-3 \\pm \\sqrt{89}}{4}$  (b) $x = \\dfrac{7 \\pm \\sqrt{205}}{6}$  (c) $x = \\dfrac{-5 \\pm \\sqrt{61}}{2}$</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "判斷根的性質",
+                            problem: "(a) 偉明宣稱方程 x² + 7x + 3 = 0 有兩個有理根。你是否同意？試解釋你的答案。(b) 文俊宣稱方程 2x² - 5x = 0 有兩個無理根。你是否同意？試解釋你的答案。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) x² + 7x + 3 = 0：</strong></div>
+                                    <div class="ml-4">計算判別式：Δ = 7² - 4(1)(3) = 49 - 12 = 37</div>
+                                    <div class="ml-4">因為 Δ = 37 > 0，方程有兩個不同實根</div>
+                                    <div class="ml-4">但 √37 不是完全平方數，所以根為無理數</div>
+                                    <div class="ml-4">$x = \\dfrac{-7 \\pm \\sqrt{37}}{2}$</div>
+                                    <div class="ml-4"><span class="text-red-600 font-semibold">不同意</span>偉明的說法，方程有兩個無理根</div>
+                                    
+                                    <div><strong>(b) 2x² - 5x = 0：</strong></div>
+                                    <div class="ml-4">重寫為：2x² - 5x + 0 = 0</div>
+                                    <div class="ml-4">因式分解：x(2x - 5) = 0</div>
+                                    <div class="ml-4">根為：x = 0 或 2x - 5 = 0</div>
+                                    <div class="ml-4">所以 x = 0 或 x = 5/2</div>
+                                    <div class="ml-4">兩個根都是有理數</div>
+                                    <div class="ml-4"><span class="text-red-600 font-semibold">不同意</span>文俊的說法，方程有兩個有理根</div>
+                                    
+                                    <div><strong>結論：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 不同意，有兩個無理根  (b) 不同意，有兩個有理根</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "用二次公式解方程 x² + 3x + 2 = 0 的根是：",
+                            options: ["x = -1, -2", "x = 1, 2", "x = -1, 2", "x = 1, -2"],
+                            answer: 0,
+                            explanation: "使用二次公式：x = (-3 ± √(9-8))/2 = (-3 ± 1)/2，所以 x = -1 或 x = -2"
+                        },
+                        {
+                            question: "方程 x² - 5x + 6 = 0 的判別式為：",
+                            options: ["Δ = 1", "Δ = -1", "Δ = 25", "Δ = 49"],
+                            answer: 0,
+                            explanation: "Δ = b² - 4ac = (-5)² - 4(1)(6) = 25 - 24 = 1"
+                        },
+                        {
+                            question: "解方程 x² - 3x - 20 = 0，答案以根式表示：",
+                            options: ["$x = \\dfrac{3 \\pm \\sqrt{89}}{2}$", "$x = \\dfrac{-3 \\pm \\sqrt{89}}{2}$", "$x = \\dfrac{3 \\pm \\sqrt{69}}{2}$", "$x = \\dfrac{3 \\pm \\sqrt{11}}{2}$"],
+                            answer: 0,
+                            explanation: "Δ = (-3)² - 4(1)(-20) = 9 + 80 = 89，所以 x = (3 ± √89)/2"
+                        },
+                        {
+                            question: "若方程 2x² - 8x + 5 = 0，判別式為：",
+                            options: ["Δ = 24", "Δ = -24", "Δ = 64", "Δ = -64"],
+                            answer: 0,
+                            explanation: "Δ = (-8)² - 4(2)(5) = 64 - 40 = 24"
+                        },
+                        {
+                            question: "方程 x² + 7x + 7 = 0 有兩個有理根嗎？",
+                            options: ["有", "沒有"],
+                            answer: 1,
+                            explanation: "Δ = 7² - 4(1)(7) = 49 - 28 = 21，因為√21不是有理數，所以方程有兩個無理根"
+                        },
+                        {
+                            question: "解方程 3x² + 3x - 1 = 0，答案以根式表示：",
+                            options: ["$x = \\dfrac{-3 \\pm \\sqrt{21}}{6}$", "$x = \\dfrac{3 \\pm \\sqrt{21}}{6}$", "$x = \\dfrac{-3 \\pm \\sqrt{21}}{3}$", "$x = \\dfrac{3 \\pm \\sqrt{21}}{3}$"],
+                            answer: 0,
+                            explanation: "Δ = 3² - 4(3)(-1) = 9 + 12 = 21，所以 x = (-3 ± √21)/(2×3) = (-3 ± √21)/6"
+                        }
+                    ]
+                },
+                "1.4": {
+                    concept: {
+                        title: "二次方程的根的性質",
+                        definitions: [
+                            {
+                                term: "判別式 Discriminant",
+                                def: "對於 ax² + bx + c = 0，其判別式為 Δ = b² - 4ac"
+                            },
+                            {
+                                term: "根的性質判斷",
+                                def: "• 若 Δ > 0，則該二次方程有兩個相異實根<br>• 若 Δ = 0，則該二次方程有一個實根（二重實根）<br>• 若 Δ < 0，則該二次方程無實根<br>• 若 Δ ≥ 0，則該二次方程有實根"
+                            },
+                            {
+                                term: "有理根判斷",
+                                def: "當 Δ > 0 且 Δ 是完全平方數時，方程有兩個有理根；否則為無理根"
+                            }
+                        ],
+                        properties: [
+                            "判別式決定根的個數和性質",
+                            "可利用判別式求參數範圍",
+                            "二次方程只有一個實根時，判別式 Δ = 0",
+                            "當方程有兩個相異實根時，判別式 Δ > 0",
+                            "當方程沒有實根時，判別式 Δ < 0"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "判斷實根個數",
+                            problem: "判斷下列各二次方程有多少個實根：(a) x² + 5x + 4 = 0  (b) x² - 8x + 16 = 0  (c) 36x² - 81 = 0  (d) x² + 3x + 3 = 0",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) x² + 5x + 4 = 0：</strong></div>
+                                    <div class="ml-4">計算判別式：Δ = b² - 4ac = 5² - 4(1)(4) = 25 - 16 = 9</div>
+                                    <div class="ml-4">因為 Δ = 9 > 0，方程有兩個相異實根</div>
+                                    
+                                    <div><strong>(b) x² - 8x + 16 = 0：</strong></div>
+                                    <div class="ml-4">計算判別式：Δ = (-8)² - 4(1)(16) = 64 - 64 = 0</div>
+                                    <div class="ml-4">因為 Δ = 0，方程有一個實根（二重實根）</div>
+                                    
+                                    <div><strong>(c) 36x² - 81 = 0：</strong></div>
+                                    <div class="ml-4">重寫為：36x² + 0x - 81 = 0</div>
+                                    <div class="ml-4">計算判別式：Δ = 0² - 4(36)(-81) = 0 + 11664 = 11664</div>
+                                    <div class="ml-4">因為 Δ > 0，方程有兩個相異實根</div>
+                                    
+                                    <div><strong>(d) x² + 3x + 3 = 0：</strong></div>
+                                    <div class="ml-4">計算判別式：Δ = 3² - 4(1)(3) = 9 - 12 = -3</div>
+                                    <div class="ml-4">因為 Δ = -3 < 0，方程無實根</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 2個相異實根  (b) 1個重根  (c) 2個相異實根  (d) 無實根</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "求參數範圍（相異實根）",
+                            problem: "(a) 已知 x² - 2x + k = 0 有兩個相異實根，其中 k 為一常數。求 k 值的範圍。(b) 已知 2x² - 3x + k = 0 有實根，其中 k 為一常數。求 k 值的範圍。(c) 已知 (x+5)(x+1) = k 無實根，其中 k 為一常數。求 k 值的範圍。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) x² - 2x + k = 0：</strong></div>
+                                    <div class="ml-4">要有兩個相異實根，需要 Δ > 0</div>
+                                    <div class="ml-4">Δ = (-2)² - 4(1)(k) = 4 - 4k</div>
+                                    <div class="ml-4">4 - 4k > 0</div>
+                                    <div class="ml-4">4 > 4k</div>
+                                    <div class="ml-4">k < 1</div>
+                                    
+                                    <div><strong>(b) 2x² - 3x + k = 0：</strong></div>
+                                    <div class="ml-4">要有實根，需要 Δ ≥ 0</div>
+                                    <div class="ml-4">Δ = (-3)² - 4(2)(k) = 9 - 8k</div>
+                                    <div class="ml-4">9 - 8k ≥ 0</div>
+                                    <div class="ml-4">9 ≥ 8k</div>
+                                    <div class="ml-4">k ≤ 9/8</div>
+                                    
+                                    <div><strong>(c) (x+5)(x+1) = k：</strong></div>
+                                    <div class="ml-4">展開：x² + 6x + 5 = k</div>
+                                    <div class="ml-4">重寫為：x² + 6x + (5 - k) = 0</div>
+                                    <div class="ml-4">要無實根，需要 Δ < 0</div>
+                                    <div class="ml-4">Δ = 6² - 4(1)(5 - k) = 36 - 4(5 - k) = 36 - 20 + 4k = 16 + 4k</div>
+                                    <div class="ml-4">16 + 4k < 0</div>
+                                    <div class="ml-4">4k < -16</div>
+                                    <div class="ml-4">k < -4</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) k < 1  (b) k ≤ 9/8  (c) k < -4</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "只有一個實根的條件",
+                            problem: "(a) 若 x² + hx + 36 = 0 只有一個實根，其中 h 為一常數。求 h 的值。(b) 若 x² + hx + 5h - 2 = 0 只有一個實根，其中 h 為一常數。求 h 的值。(c) 若二次方程 hx² + 5hx + 2 = 0 只有一個實根，其中 h 為一常數。求 h 的值。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) x² + hx + 36 = 0：</strong></div>
+                                    <div class="ml-4">只有一個實根意味著 Δ = 0</div>
+                                    <div class="ml-4">Δ = h² - 4(1)(36) = h² - 144</div>
+                                    <div class="ml-4">h² - 144 = 0</div>
+                                    <div class="ml-4">h² = 144</div>
+                                    <div class="ml-4">h = ±12</div>
+                                    
+                                    <div><strong>(b) x² + hx + 5h - 2 = 0：</strong></div>
+                                    <div class="ml-4">只有一個實根意味著 Δ = 0</div>
+                                    <div class="ml-4">Δ = h² - 4(1)(5h - 2) = h² - 4(5h - 2) = h² - 20h + 8</div>
+                                    <div class="ml-4">h² - 20h + 8 = 0</div>
+                                    <div class="ml-4">使用二次公式：h = (20 ± √(400 - 32))/2 = (20 ± √368)/2 = (20 ± 4√23)/2 = 10 ± 2√23</div>
+                                    
+                                    <div><strong>(c) hx² + 5hx + 2 = 0：</strong></div>
+                                    <div class="ml-4">這是二次方程，需要 h ≠ 0</div>
+                                    <div class="ml-4">只有一個實根意味著 Δ = 0</div>
+                                    <div class="ml-4">Δ = (5h)² - 4(h)(2) = 25h² - 8h = h(25h - 8)</div>
+                                    <div class="ml-4">h(25h - 8) = 0</div>
+                                    <div class="ml-4">h = 0 或 25h - 8 = 0</div>
+                                    <div class="ml-4">由於 h ≠ 0（否則不是二次方程），所以 h = 8/25</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) h = ±12  (b) h = 10 ± 2√23  (c) h = 8/25</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "判斷根的性質",
+                            problem: "(a) 偉明宣稱方程 x² + 8 = 0 有兩個有理根。你是否同意？試解釋你的答案。(b) 已知 3x² + 4x + k = 0 有兩個相異實根，其中 k 為一常數。若 k 為一整數，求 k 的最大可取值。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 方程 x² + 8 = 0：</strong></div>
+                                    <div class="ml-4">重寫為：x² + 0x + 8 = 0</div>
+                                    <div class="ml-4">計算判別式：Δ = 0² - 4(1)(8) = 0 - 32 = -32 < 0</div>
+                                    <div class="ml-4">因為 Δ < 0，方程沒有實根</div>
+                                    <div class="ml-4"><span class="text-red-600 font-semibold">不同意</span>偉明的說法，方程沒有實根，更沒有有理根</div>
+                                    
+                                    <div><strong>(b) 3x² + 4x + k = 0：</strong></div>
+                                    <div class="ml-4">要有兩個相異實根，需要 Δ > 0</div>
+                                    <div class="ml-4">Δ = 4² - 4(3)(k) = 16 - 12k</div>
+                                    <div class="ml-4">16 - 12k > 0</div>
+                                    <div class="ml-4">16 > 12k</div>
+                                    <div class="ml-4">k < 16/12 = 4/3 ≈ 1.33</div>
+                                    <div class="ml-4">因為 k 為整數且 k < 4/3，所以最大可取值為 k = 1</div>
+                                    <div class="ml-4">檢驗：當 k = 1 時，Δ = 16 - 12 = 4 > 0 ✓</div>
+                                    <div class="ml-4">當 k = 2 時，Δ = 16 - 24 = -8 < 0（不符合）</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 不同意，方程沒有實根  (b) k 的最大可取值為 1</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "判斷方程 x² + 8x + 4 = 0 有多少個實根：",
+                            options: ["0個", "1個", "2個", "3個"],
+                            answer: 2,
+                            explanation: "Δ = 8² - 4(1)(4) = 64 - 16 = 48 > 0，所以有兩個不同實根"
+                        },
+                        {
+                            question: "方程 2x² + 9x + 11 = 0 有多少個實根：",
+                            options: ["0個", "1個", "2個", "無法確定"],
+                            answer: 0,
+                            explanation: "Δ = 9² - 4(2)(11) = 81 - 88 = -7 < 0，所以沒有實根"
+                        },
+                        {
+                            question: "方程 25x² - 36 = 0 有多少個實根：",
+                            options: ["0個", "1個", "2個", "3個"],
+                            answer: 2,
+                            explanation: "重寫為 25x² + 0x - 36 = 0，Δ = 0² - 4(25)(-36) = 3600 > 0，所以有兩個實根"
+                        },
+                        {
+                            question: "方程 4x² - 36x + 81 = 0 有多少個實根：",
+                            options: ["0個", "1個", "2個", "3個"],
+                            answer: 1,
+                            explanation: "Δ = (-36)² - 4(4)(81) = 1296 - 1296 = 0，所以有一個重根"
+                        },
+                        {
+                            question: "方程 3x² + 3x + 3 = 0 有多少個實根：",
+                            options: ["0個", "1個", "2個", "3個"],
+                            answer: 0,
+                            explanation: "Δ = 3² - 4(3)(3) = 9 - 36 = -27 < 0，所以沒有實根"
+                        },
+                        {
+                            question: "方程 -6x² + 5x - 7 = 0 有多少個實根：",
+                            options: ["0個", "1個", "2個", "3個"],
+                            answer: 0,
+                            explanation: "Δ = 5² - 4(-6)(-7) = 25 - 168 = -143 < 0，所以沒有實根"
+                        },
+                        {
+                            question: "若方程 3x² + 4x + k = 0 有兩個相異實根，其中 k 為常數，求 k 值的範圍：",
+                            options: ["k < 4/3", "k > 4/3", "k ≤ 4/3", "k ≥ 4/3"],
+                            answer: 0,
+                            explanation: "要有兩個相異實根，需 Δ > 0：4² - 4(3)(k) > 0，即 16 - 12k > 0，所以 k < 4/3"
+                        },
+                        {
+                            question: "若方程 2x² - 3x - 1 + k = 0 有實根，其中 k 為常數，求 k 值的範圍：",
+                            options: ["k ≥ -17/8", "k ≤ -17/8", "k > -17/8", "k < -17/8"],
+                            answer: 0,
+                            explanation: "要有實根，需 Δ ≥ 0：(-3)² - 4(2)(-1+k) ≥ 0，即 9 - 8(-1+k) ≥ 0，9 + 8 - 8k ≥ 0，所以 k ≤ 17/8"
+                        },
+                        {
+                            question: "若方程 x² + 2x + 2 - k = 0 無實根，其中 k 為常數，求 k 值的範圍：",
+                            options: ["k < 1", "k > 1", "k ≤ 1", "k ≥ 1"],
+                            answer: 0,
+                            explanation: "要無實根，需 Δ < 0：2² - 4(1)(2-k) < 0，即 4 - 4(2-k) < 0，4 - 8 + 4k < 0，所以 k < 1"
+                        },
+                        {
+                            question: "若方程 x² + hx + 36 = 0 只有一個實根，其中 h 為常數，求 h 的值：",
+                            options: ["±6", "±12", "±18", "±36"],
+                            answer: 1,
+                            explanation: "只有一個實根意味著 Δ = 0：h² - 4(1)(36) = 0，即 h² = 144，所以 h = ±12"
+                        },
+                        {
+                            question: "若方程 x² + 6x + h = 0 只有一個實根，其中 h 為常數，求 h 的值：",
+                            options: ["9", "-9", "±9", "±√24"],
+                            answer: 0,
+                            explanation: "只有一個實根意味著 Δ = 0：6² - 4(1)(h) = 0，即 36 - 4h = 0，所以 h = 9"
+                        },
+                        {
+                            question: "偉明宣稱方程 2x² + 11x + 24 = 0 有兩個無理根。你是否同意？",
+                            options: ["同意", "不同意"],
+                            answer: 1,
+                            explanation: "Δ = 11² - 4(2)(24) = 121 - 192 = -71 < 0，方程沒有實根，更沒有無理根，所以不同意"
+                        }
+                    ]
+                },
+                "1.5": {
+                    concept: {
+                        title: "涉及二次方程的簡單應用題",
+                        definitions: [
+                            {
+                                term: "應用題的解題步驟",
+                                def: "1. 理解題意，確定未知數<br>2. 根據題意列出二次方程<br>3. 解方程求出數值解<br>4. 檢驗解的合理性<br>5. 寫出答案"
+                            },
+                            {
+                                term: "連續數問題",
+                                def: "連續整數：n, n+1, n+2, ...<br>連續奇數：n, n+2, n+4, ...<br>連續偶數：n, n+2, n+4, ..."
+                            },
+                            {
+                                term: "幾何應用",
+                                def: "長方形面積 = 長 × 寬<br>三角形面積 = ½ × 底 × 高<br>畢氏定理：c² = a² + b²"
+                            }
+                        ],
+                        properties: [
+                            "常見的應用情境：面積問題、運動問題、經濟問題、幾何問題",
+                            "注意檢查解的實際意義，排除不合理的解",
+                            "單位要統一，答案要完整",
+                            "圖形問題常涉及長度、面積、體積的計算",
+                            "連續數問題要注意奇數、偶數的設法"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "連續奇數問題",
+                            problem: "兩個連續正奇數之積為 323。求該兩個數。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>設未知數</div>
+                                    <div class="ml-4">設第一個正奇數為 x，則下一個連續正奇數為 x + 2</div>
+                                    <div><strong>步驟2：</strong>列方程</div>
+                                    <div class="ml-4">x(x + 2) = 323</div>
+                                    <div class="ml-4">x² + 2x = 323</div>
+                                    <div class="ml-4">x² + 2x - 323 = 0</div>
+                                    <div><strong>步驟3：</strong>解方程</div>
+                                    <div class="ml-4">用二次公式：x = (-2 ± √(4 + 1292))/2 = (-2 ± √1296)/2 = (-2 ± 36)/2</div>
+                                    <div class="ml-4">x = 17 或 x = -19</div>
+                                    <div><strong>步驟4：</strong>檢驗</div>
+                                    <div class="ml-4">因為要求正奇數，所以 x = 17</div>
+                                    <div class="ml-4">兩個連續正奇數為 17 和 19</div>
+                                    <div class="ml-4">檢驗：17 × 19 = 323 ✓</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">17 和 19</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "連續整數問題",
+                            problem: "兩個連續整數之積為 342。求該兩個數。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>設未知數</div>
+                                    <div class="ml-4">設第一個整數為 x，則下一個連續整數為 x + 1</div>
+                                    <div><strong>步驟2：</strong>列方程</div>
+                                    <div class="ml-4">x(x + 1) = 342</div>
+                                    <div class="ml-4">x² + x = 342</div>
+                                    <div class="ml-4">x² + x - 342 = 0</div>
+                                    <div><strong>步驟3：</strong>解方程</div>
+                                    <div class="ml-4">用二次公式：x = (-1 ± √(1 + 1368))/2 = (-1 ± √1369)/2 = (-1 ± 37)/2</div>
+                                    <div class="ml-4">x = 18 或 x = -19</div>
+                                    <div><strong>步驟4：</strong>兩組答案都合理</div>
+                                    <div class="ml-4">當 x = 18 時，兩數為 18 和 19</div>
+                                    <div class="ml-4">當 x = -19 時，兩數為 -19 和 -18</div>
+                                    <div class="ml-4">檢驗：18 × 19 = 342 ✓，(-19) × (-18) = 342 ✓</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">18, 19 或 -19, -18</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "平方和問題",
+                            problem: "兩個連續正整數的平方之和為 481。求該兩個數中較小的數。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>設未知數</div>
+                                    <div class="ml-4">設較小的正整數為 x，則較大的為 x + 1</div>
+                                    <div><strong>步驟2：</strong>列方程</div>
+                                    <div class="ml-4">x² + (x + 1)² = 481</div>
+                                    <div class="ml-4">x² + x² + 2x + 1 = 481</div>
+                                    <div class="ml-4">2x² + 2x + 1 = 481</div>
+                                    <div class="ml-4">2x² + 2x - 480 = 0</div>
+                                    <div class="ml-4">x² + x - 240 = 0</div>
+                                    <div><strong>步驟3：</strong>解方程</div>
+                                    <div class="ml-4">用二次公式：x = (-1 ± √(1 + 960))/2 = (-1 ± √961)/2 = (-1 ± 31)/2</div>
+                                    <div class="ml-4">x = 15 或 x = -16</div>
+                                    <div><strong>步驟4：</strong>檢驗</div>
+                                    <div class="ml-4">因為要求正整數，所以 x = 15</div>
+                                    <div class="ml-4">兩個連續正整數為 15 和 16</div>
+                                    <div class="ml-4">檢驗：15² + 16² = 225 + 256 = 481 ✓</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">較小的數是 15</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "長方形幾何問題",
+                            problem: "已知一個長方形的長及闊分別為 (x - 3) cm 及 (x - 2) cm。若該長方形的對角線為 (2x - 7) cm，求該長方形的周界。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>應用勾股定理</div>
+                                    <div class="ml-4">對角線² = 長² + 闊²</div>
+                                    <div class="ml-4">(2x - 7)² = (x - 3)² + (x - 2)²</div>
+                                    <div><strong>步驟2：</strong>展開方程</div>
+                                    <div class="ml-4">4x² - 28x + 49 = x² - 6x + 9 + x² - 4x + 4</div>
+                                    <div class="ml-4">4x² - 28x + 49 = 2x² - 10x + 13</div>
+                                    <div><strong>步驟3：</strong>整理方程</div>
+                                    <div class="ml-4">2x² - 18x + 36 = 0</div>
+                                    <div class="ml-4">x² - 9x + 18 = 0</div>
+                                    <div><strong>步驟4：</strong>解方程</div>
+                                    <div class="ml-4">(x - 3)(x - 6) = 0</div>
+                                    <div class="ml-4">x = 3 或 x = 6</div>
+                                    <div><strong>步驟5：</strong>檢驗並求周界</div>
+                                    <div class="ml-4">x = 3 時：長 = 0 cm，闊 = 1 cm（長度不合理）</div>
+                                    <div class="ml-4">x = 6 時：長 = 3 cm，闊 = 4 cm，對角線 = 5 cm</div>
+                                    <div class="ml-4">檢驗：3² + 4² = 9 + 16 = 25 = 5² ✓</div>
+                                    <div class="ml-4">周界 = 2(3 + 4) = 14 cm</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">14 cm</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "三角形面積問題",
+                            problem: "一個三角形的底及高分別為 (x + 3) cm 及 (x - 1) cm。若該三角形的面積為 48 cm²，求 x 的值。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>應用三角形面積公式</div>
+                                    <div class="ml-4">面積 = ½ × 底 × 高</div>
+                                    <div class="ml-4">48 = ½ × (x + 3) × (x - 1)</div>
+                                    <div><strong>步驟2：</strong>整理方程</div>
+                                    <div class="ml-4">96 = (x + 3)(x - 1)</div>
+                                    <div class="ml-4">96 = x² + 2x - 3</div>
+                                    <div class="ml-4">x² + 2x - 99 = 0</div>
+                                    <div><strong>步驟3：</strong>解方程</div>
+                                    <div class="ml-4">用二次公式：x = (-2 ± √(4 + 396))/2 = (-2 ± √400)/2 = (-2 ± 20)/2</div>
+                                    <div class="ml-4">x = 9 或 x = -11</div>
+                                    <div><strong>步驟4：</strong>檢驗</div>
+                                    <div class="ml-4">x = 9 時：底 = 12 cm，高 = 8 cm（合理）</div>
+                                    <div class="ml-4">x = -11 時：底 = -8 cm，高 = -12 cm（不合理）</div>
+                                    <div class="ml-4">檢驗：面積 = ½ × 12 × 8 = 48 cm² ✓</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">x = 9</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "兩個連續正整數之積為 272。求該兩個數之和。",
+                            options: ["33", "34", "35", "36"],
+                            answer: 0,
+                            explanation: "設兩個連續正整數為 x 和 x+1，則 x(x+1) = 272，解得 x = 16，所以兩數為 16 和 17，和為 33"
+                        },
+                        {
+                            question: "兩個連續正偶數之積為 224。求該兩個數之和。",
+                            options: ["28", "30", "32", "34"],
+                            answer: 1,
+                            explanation: "設兩個連續正偶數為 x 和 x+2，則 x(x+2) = 224，解得 x = 14，所以兩數為 14 和 16，和為 30"
+                        },
+                        {
+                            question: "兩個連續整數之積為 552。較小的數是多少？",
+                            options: ["23", "-25", "23 或 -25", "24"],
+                            answer: 2,
+                            explanation: "設兩個連續整數為 x 和 x+1，則 x(x+1) = 552，解得 x = 23 或 x = -25，所以較小的數為 23 或 -25"
+                        },
+                        {
+                            question: "兩個連續正整數的平方之和為 481。較大的數是多少？",
+                            options: ["15", "16", "17", "18"],
+                            answer: 1,
+                            explanation: "設兩個連續正整數為 x 和 x+1，則 x² + (x+1)² = 481，解得 x = 15，所以較大的數為 16"
+                        },
+                        {
+                            question: "一個三角形的底及高分別為 (x + 3) cm 及 (x - 1) cm。若該三角形的面積為 48 cm²，求 x 的值。",
+                            options: ["6", "7", "8", "9"],
+                            answer: 3,
+                            explanation: "三角形面積 = ½ × 底 × 高，所以 ½(x+3)(x-1) = 48，展開得 x² + 2x - 99 = 0，解得 x = 9"
+                        },
+                        {
+                            question: "一個長方形的周界為 28 cm，面積為 48 cm²。求該長方形的長和寬的差的絕對值。",
+                            options: ["2 cm", "4 cm", "6 cm", "8 cm"],
+                            answer: 0,
+                            explanation: "設長為 a，寬為 b，則 2(a+b) = 28 和 ab = 48。解得 a+b = 14 和 ab = 48，所以 a 和 b 是方程 t² - 14t + 48 = 0 的根，解得 t = 8 或 t = 6，所以差為 |8-6| = 2 cm"
+                        },
+                        {
+                            question: "已知長方形的長為 (x+1) cm，寬為 (x-2) cm，對角線為 5 cm。求 x 的值。",
+                            options: ["3", "4", "5", "6"],
+                            answer: 1,
+                            explanation: "由勾股定理：(x+1)² + (x-2)² = 5²，展開得 2x² - 2x - 20 = 0，即 x² - x - 10 = 0，解得 x = 4（因為 x > 2 才合理）"
+                        },
+                        {
+                            question: "一個正方形的邊長增加 3 cm 後，面積增加 39 cm²。原正方形的邊長是多少？",
+                            options: ["4 cm", "5 cm", "6 cm", "7 cm"],
+                            answer: 1,
+                            explanation: "設原邊長為 x cm，則 (x+3)² - x² = 39，展開得 6x + 9 = 39，解得 x = 5"
+                        }
+                    ]
+                }
+            },
+            2: {
+                "2.0": {
+                    concept: {
+                        title: "直角坐標系重溫",
+                        definitions: [
+                            {
+                                term: "直角坐標系",
+                                def: "由兩條互相垂直的數線組成的平面坐標系，水平數線稱為 x 軸，垂直數線稱為 y 軸"
+                            },
+                            {
+                                term: "坐標",
+                                def: "平面上任一點 P 可用有序對 (x, y) 表示，其中 x 為橫坐標，y 為縱坐標"
+                            },
+                            {
+                                term: "象限",
+                                def: "x 軸和 y 軸將平面分成四個區域：第一象限 (+,+)、第二象限 (-,+)、第三象限 (-,-)、第四象限 (+,-)"
+                            }
+                        ],
+                        properties: [
+                            "原點 O 的坐標為 (0, 0)",
+                            "x 軸上的點縱坐標為 0，y 軸上的點橫坐標為 0",
+                            "兩點間距離公式：$d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$",
+                            "中點坐標公式：$M = \\left(\\dfrac{x_1+x_2}{2}, \\dfrac{y_1+y_2}{2}\\right)$"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "計算兩點間距離",
+                            problem: "求下列各組點間的距離：(a) A(3,5)，B(17,5) (b) C(6,-2)，D(-2,-2) (c) E(1,2)，F(4,6)",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) A(3,5)，B(17,5)：</strong></div>
+                                    <div class="ml-4">兩點在同一水平線上（y坐標相同）</div>
+                                    <div class="ml-4">距離 = |x₂ - x₁| = |17 - 3| = 14</div>
+                                    
+                                    <div><strong>(b) C(6,-2)，D(-2,-2)：</strong></div>
+                                    <div class="ml-4">兩點在同一水平線上（y坐標相同）</div>
+                                    <div class="ml-4">距離 = |x₂ - x₁| = |-2 - 6| = 8</div>
+                                    
+                                    <div><strong>(c) E(1,2)，F(4,6)：</strong></div>
+                                    <div class="ml-4">使用一般距離公式</div>
+                                    <div class="ml-4">$d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$</div>
+                                    <div class="ml-4">$d = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 14 (b) 8 (c) 5</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "計算直線斜率",
+                            problem: "求通過下列各組點的直線的斜率：(a) A(3,4)，B(15,4) (b) C(-3,7)，D(-3,18) (c) E(3,4)，F(5,6)",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) A(3,4)，B(15,4)：</strong></div>
+                                    <div class="ml-4">兩點在同一水平線上（y坐標相同）</div>
+                                    <div class="ml-4">斜率 = $\\dfrac{y_2-y_1}{x_2-x_1} = \\dfrac{4-4}{15-3} = \\dfrac{0}{12} = 0$</div>
+                                    
+                                    <div><strong>(b) C(-3,7)，D(-3,18)：</strong></div>
+                                    <div class="ml-4">兩點在同一鉛垂線上（x坐標相同）</div>
+                                    <div class="ml-4">斜率 = 未定義（分母為0）</div>
+                                    
+                                    <div><strong>(c) E(3,4)，F(5,6)：</strong></div>
+                                    <div class="ml-4">斜率 = $\\dfrac{y_2-y_1}{x_2-x_1} = \\dfrac{6-4}{5-3} = \\dfrac{2}{2} = 1$</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 0 (b) 未定義 (c) 1</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "判斷平行與垂直",
+                            problem: "判斷下列各情況中，AB是否平行於CD：A(2,5)，B(7,13)，C(-3,5)，D(-8,0)",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>計算AB的斜率</div>
+                                    <div class="ml-4">$m_{AB} = \\dfrac{13-5}{7-2} = \\dfrac{8}{5}$</div>
+                                    
+                                    <div><strong>步驟2：</strong>計算CD的斜率</div>
+                                    <div class="ml-4">$m_{CD} = \\dfrac{0-5}{-8-(-3)} = \\dfrac{-5}{-5} = 1$</div>
+                                    
+                                    <div><strong>步驟3：</strong>比較斜率</div>
+                                    <div class="ml-4">因為 $m_{AB} = \\dfrac{8}{5} \\neq 1 = m_{CD}$</div>
+                                    
+                                    <div><strong>結論：</strong><span class="bg-red-100 dark:bg-red-900 px-2 py-1 rounded">AB不平行於CD</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "中點與截點公式",
+                            problem: "已知兩點A(3,7)及B(18,-17)。若M為AB的中點，求M的坐標。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>應用中點公式</div>
+                                    <div class="ml-4">中點坐標 = $\\left(\\dfrac{x_1+x_2}{2}, \\dfrac{y_1+y_2}{2}\\right)$</div>
+                                    
+                                    <div><strong>步驟2：</strong>代入數值</div>
+                                    <div class="ml-4">M = $\\left(\\dfrac{3+18}{2}, \\dfrac{7+(-17)}{2}\\right)$</div>
+                                    <div class="ml-4">M = $\\left(\\dfrac{21}{2}, \\dfrac{-10}{2}\\right)$</div>
+                                    <div class="ml-4">M = $(10.5, -5)$</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">M的坐標為 (10.5, -5)</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "點 (-3, 4) 位於第幾象限？",
+                            options: ["第一象限", "第二象限", "第三象限", "第四象限"],
+                            answer: 1,
+                            explanation: "橫坐標為負，縱坐標為正，所以位於第二象限"
+                        },
+                        {
+                            question: "求點A(7,-4)和點B(-7,-4)之間的距離：",
+                            options: ["14", "8", "0", "無法計算"],
+                            answer: 0,
+                            explanation: "兩點在同一水平線上，距離 = |x₂ - x₁| = |-7 - 7| = 14"
+                        },
+                        {
+                            question: "通過點(5,2)和(-17,-6)的直線斜率是：",
+                            options: ["4/11", "-4/11", "11/4", "-11/4"],
+                            answer: 0,
+                            explanation: "斜率 = (y₂-y₁)/(x₂-x₁) = (-6-2)/(-17-5) = -8/(-22) = 4/11"
+                        },
+                        {
+                            question: "若兩直線的斜率分別為3和-1/3，則這兩直線：",
+                            options: ["平行", "垂直", "相交但不垂直", "重合"],
+                            answer: 1,
+                            explanation: "因為 3 × (-1/3) = -1，所以兩直線垂直"
+                        },
+                        {
+                            question: "點A(-2,0)和點B(-9,13)的中點坐標是：",
+                            options: ["(-5.5, 6.5)", "(5.5, -6.5)", "(-3.5, 6.5)", "(3.5, -6.5)"],
+                            answer: 0,
+                            explanation: "中點 = ((-2+(-9))/2, (0+13)/2) = (-11/2, 13/2) = (-5.5, 6.5)"
+                        }
+                    ]
+                },
+                "2.1": {
+                    concept: {
+                        title: "直線方程",
+                        definitions: [
+                            {
+                                term: "斜率",
+                                def: "直線的傾斜程度，記作 m。對於通過兩點 (x₁, y₁) 和 (x₂, y₂) 的直線：$m = \\dfrac{y_2-y_1}{x_2-x_1}$ (x₁ ≠ x₂)"
+                            },
+                            {
+                                term: "點斜式",
+                                def: "通過點 (x₁, y₁) 且斜率為 m 的直線方程：y - y₁ = m(x - x₁)"
+                            },
+                            {
+                                term: "斜截式",
+                                def: "斜率為 m，y 截距為 c 的直線方程：y = mx + c"
+                            },
+                            {
+                                term: "一般式",
+                                def: "Ax + By + C = 0 的形式，其中 A 和 B 不同時為 0"
+                            }
+                        ],
+                        properties: [
+                            "斜率為正時直線向右上傾斜，斜率為負時向右下傾斜",
+                            "水平線斜率為 0，垂直線斜率不存在",
+                            "平行線斜率相等，垂直線斜率互為負倒數",
+                            "y 截距是直線與 y 軸的交點的縱坐標"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "求直線方程（基本題型）",
+                            problem: "(a) 已知直線L通過(4,3)，其斜率為5。求L的方程。(b) 已知直線L的斜率為-3/2，且(1,-1)為L上的一點。求L的方程。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 通過(4,3)，斜率為5：</strong></div>
+                                    <div class="ml-4">使用點斜式：y - y₁ = m(x - x₁)</div>
+                                    <div class="ml-4">y - 3 = 5(x - 4)</div>
+                                    <div class="ml-4">y - 3 = 5x - 20</div>
+                                    <div class="ml-4">y = 5x - 17</div>
+                                    <div class="ml-4">一般式：5x - y - 17 = 0</div>
+                                    
+                                    <div><strong>(b) 斜率為-3/2，通過(1,-1)：</strong></div>
+                                    <div class="ml-4">使用點斜式：y - (-1) = -3/2(x - 1)</div>
+                                    <div class="ml-4">y + 1 = -3/2x + 3/2</div>
+                                    <div class="ml-4">y = -3/2x + 1/2</div>
+                                    <div class="ml-4">一般式：3x + 2y - 1 = 0</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 5x - y - 17 = 0  (b) 3x + 2y - 1 = 0</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "通過兩點的直線方程",
+                            problem: "(a) 已知直線L通過(2,3)及(3,-7)。求L的方程。(b) 已知直線L通過(8,6)及原點。求L的方程。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 通過(2,3)和(3,-7)：</strong></div>
+                                    <div class="ml-4">先求斜率：m = $\\dfrac{-7-3}{3-2} = \\dfrac{-10}{1} = -10$</div>
+                                    <div class="ml-4">使用點斜式（取點(2,3)）：y - 3 = -10(x - 2)</div>
+                                    <div class="ml-4">y - 3 = -10x + 20</div>
+                                    <div class="ml-4">y = -10x + 23</div>
+                                    <div class="ml-4">一般式：10x + y - 23 = 0</div>
+                                    
+                                    <div><strong>(b) 通過(8,6)和原點(0,0)：</strong></div>
+                                    <div class="ml-4">斜率：m = $\\dfrac{6-0}{8-0} = \\dfrac{6}{8} = \\dfrac{3}{4}$</div>
+                                    <div class="ml-4">通過原點的直線：y = mx = $\\dfrac{3}{4}x$</div>
+                                    <div class="ml-4">一般式：3x - 4y = 0</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 10x + y - 23 = 0  (b) 3x - 4y = 0</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "斜截式和截距式",
+                            problem: "(a) 已知直線L的斜率及y截距分別為3及2。求L的方程，答案以斜截式表示。(b) 已知直線L的x截距及y截距分別為-2及-11。求L的方程。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 斜率為3，y截距為2：</strong></div>
+                                    <div class="ml-4">直接應用斜截式：y = mx + c</div>
+                                    <div class="ml-4">y = 3x + 2</div>
+                                    
+                                    <div><strong>(b) x截距為-2，y截距為-11：</strong></div>
+                                    <div class="ml-4">使用截距式：$\\dfrac{x}{a} + \\dfrac{y}{b} = 1$</div>
+                                    <div class="ml-4">$\\dfrac{x}{-2} + \\dfrac{y}{-11} = 1$</div>
+                                    <div class="ml-4">$-\\dfrac{x}{2} - \\dfrac{y}{11} = 1$</div>
+                                    <div class="ml-4">乘以-22：11x + 2y = -22</div>
+                                    <div class="ml-4">一般式：11x + 2y + 22 = 0</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) y = 3x + 2  (b) 11x + 2y + 22 = 0</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "從一般式求斜率和截距",
+                            problem: "(a) 求2x + 7y = 0的斜率、x截距及y截距。(b) 求5x - 8y + 3 = 0的斜率、x截距及y截距。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 2x + 7y = 0：</strong></div>
+                                    <div class="ml-4">斜率 = -A/B = -2/7</div>
+                                    <div class="ml-4">x截距：令y = 0，得x = 0</div>
+                                    <div class="ml-4">y截距：令x = 0，得y = 0</div>
+                                    <div class="ml-4">（此直線通過原點）</div>
+                                    
+                                    <div><strong>(b) 5x - 8y + 3 = 0：</strong></div>
+                                    <div class="ml-4">斜率 = -A/B = -5/(-8) = 5/8</div>
+                                    <div class="ml-4">x截距：令y = 0，得5x + 3 = 0，x = -3/5</div>
+                                    <div class="ml-4">y截距：令x = 0，得-8y + 3 = 0，y = 3/8</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 斜率:-2/7, 截距:原點  (b) 斜率:5/8, x截距:-3/5, y截距:3/8</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "直線 2x - 3y + 6 = 0 的斜率是：",
+                            options: ["2/3", "-2/3", "3/2", "-3/2"],
+                            answer: 0,
+                            explanation: "將一般式轉為斜截式：y = (2/3)x + 2，所以斜率為 2/3"
+                        },
+                        {
+                            question: "通過點(-1,-3)且斜率為4的直線方程是：",
+                            options: ["4x - y + 1 = 0", "4x - y - 1 = 0", "x - 4y + 1 = 0", "x + 4y - 1 = 0"],
+                            answer: 0,
+                            explanation: "使用點斜式：y - (-3) = 4(x - (-1))，展開得y + 3 = 4x + 4，即4x - y + 1 = 0"
+                        },
+                        {
+                            question: "通過點(7,-2)和(-3,5)的直線方程是：",
+                            options: ["7x + 10y - 29 = 0", "7x - 10y + 29 = 0", "7x + 10y + 29 = 0", "10x - 7y + 29 = 0"],
+                            answer: 0,
+                            explanation: "斜率 = (5-(-2))/(-3-7) = 7/(-10) = -7/10，用點斜式得 7x + 10y - 29 = 0"
+                        },
+                        {
+                            question: "已知直線的x截距為2/3，y截距為-1/5，則其方程為：",
+                            options: ["15x - 6y - 10 = 0", "15x + 6y - 10 = 0", "6x - 15y - 10 = 0", "6x + 15y + 10 = 0"],
+                            answer: 0,
+                            explanation: "使用截距式：x/(2/3) + y/(-1/5) = 1，化簡得 15x - 6y - 10 = 0"
+                        },
+                        {
+                            question: "直線3x + 2y - 4 = 0的y截距是：",
+                            options: ["2", "-2", "3/2", "-3/2"],
+                            answer: 0,
+                            explanation: "y截距 = -C/B = -(-4)/2 = 2"
+                        }
+                    ]
+                },
+                "2.2": {
+                    concept: {
+                        title: "直線的相交",
+                        definitions: [
+                            {
+                                term: "平行線",
+                                def: "兩條直線平行當且僅當它們的斜率相等（或都不存在斜率）"
+                            },
+                            {
+                                term: "垂直線",
+                                def: "兩條直線垂直當且僅當它們的斜率乘積為 -1"
+                            },
+                            {
+                                term: "交點",
+                                def: "兩條不平行直線的交點可通過聯立方程組求得"
+                            }
+                        ],
+                        properties: [
+                            "平行線：m₁ = m₂ 且 y 截距不同",
+                            "垂直線：m₁ × m₂ = -1",
+                            "重合線：兩條直線完全相同",
+                            "相交線：有且僅有一個交點"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "求兩直線交點",
+                            problem: "(a) 已知直線L₁：x + 2y - 3 = 0及直線L₂：x + y = 5相交於一點。求該相交點的坐標。(b) 已知直線L₁：x - 3y - 3 = 0及直線L₂：x + y = 4相交於一點。求該相交點的坐標。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) L₁：x + 2y - 3 = 0，L₂：x + y = 5：</strong></div>
+                                    <div class="ml-4">聯立方程組：</div>
+                                    <div class="ml-4">x + 2y - 3 = 0 ... (1)</div>
+                                    <div class="ml-4">x + y = 5 ... (2)</div>
+                                    <div class="ml-4">由(2)：x = 5 - y</div>
+                                    <div class="ml-4">代入(1)：(5 - y) + 2y - 3 = 0</div>
+                                    <div class="ml-4">5 - y + 2y - 3 = 0</div>
+                                    <div class="ml-4">y + 2 = 0，所以 y = -2</div>
+                                    <div class="ml-4">x = 5 - (-2) = 7</div>
+                                    
+                                    <div><strong>(b) L₁：x - 3y - 3 = 0，L₂：x + y = 4：</strong></div>
+                                    <div class="ml-4">聯立方程組：</div>
+                                    <div class="ml-4">x - 3y - 3 = 0 ... (1)</div>
+                                    <div class="ml-4">x + y = 4 ... (2)</div>
+                                    <div class="ml-4">由(2)：x = 4 - y</div>
+                                    <div class="ml-4">代入(1)：(4 - y) - 3y - 3 = 0</div>
+                                    <div class="ml-4">4 - y - 3y - 3 = 0</div>
+                                    <div class="ml-4">1 - 4y = 0，所以 y = 1/4</div>
+                                    <div class="ml-4">x = 4 - 1/4 = 15/4</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) (7, -2)  (b) (15/4, 1/4)</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "判斷直線交點數目",
+                            problem: "判斷下列各組直線的交點數目：(a) L₁：x + 2 = 0，L₂：x + y + 4 = 0 (b) L₁：y = 3x/2 - 2，L₂：x + y - 3 = 0 (c) L₁：x - y + 10 = 4，L₂：x - y + 25 = 10",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) L₁：x + 2 = 0，L₂：x + y + 4 = 0：</strong></div>
+                                    <div class="ml-4">L₁是垂直線 x = -2</div>
+                                    <div class="ml-4">L₂：y = -x - 4（斜率為-1）</div>
+                                    <div class="ml-4">垂直線與非垂直線必相交於一點</div>
+                                    <div class="ml-4">交點：x = -2，y = -(-2) - 4 = -2</div>
+                                    <div class="ml-4">結論：<span class="text-blue-600 font-semibold">一個交點</span></div>
+                                    
+                                    <div><strong>(b) L₁：y = 3x/2 - 2，L₂：x + y - 3 = 0：</strong></div>
+                                    <div class="ml-4">L₁斜率為 3/2</div>
+                                    <div class="ml-4">L₂：y = -x + 3（斜率為-1）</div>
+                                    <div class="ml-4">因為 3/2 ≠ -1，斜率不同</div>
+                                    <div class="ml-4">結論：<span class="text-blue-600 font-semibold">一個交點</span></div>
+                                    
+                                    <div><strong>(c) L₁：x - y + 10 = 4，L₂：x - y + 25 = 10：</strong></div>
+                                    <div class="ml-4">化簡：L₁：x - y + 6 = 0，L₂：x - y + 15 = 0</div>
+                                    <div class="ml-4">兩直線斜率相同（都是1），但常數項不同</div>
+                                    <div class="ml-4">結論：<span class="text-red-600 font-semibold">平行線，無交點</span></div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 1個  (b) 1個  (c) 0個</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "求參數使直線平行或重合",
+                            problem: "若直線L₁：4x - k(k-2)y + 10 = 0與另一直線L₂：3x - ky - 5 = 0不相交，求k的值。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>步驟1：</strong>理解題意</div>
+                                    <div class="ml-4">「不相交」意味著兩直線平行</div>
+                                    
+                                    <div><strong>步驟2：</strong>轉為斜截式</div>
+                                    <div class="ml-4">L₁：y = $\\dfrac{4}{k(k-2)}x + \\dfrac{10}{k(k-2)}$</div>
+                                    <div class="ml-4">L₂：y = $\\dfrac{3}{k}x - \\dfrac{5}{k}$</div>
+                                    
+                                    <div><strong>步驟3：</strong>平行條件</div>
+                                    <div class="ml-4">斜率相等：$\\dfrac{4}{k(k-2)} = \\dfrac{3}{k}$</div>
+                                    <div class="ml-4">交叉相乘：4k = 3k(k-2)</div>
+                                    <div class="ml-4">4k = 3k² - 6k</div>
+                                    <div class="ml-4">3k² - 10k = 0</div>
+                                    <div class="ml-4">k(3k - 10) = 0</div>
+                                    <div class="ml-4">k = 0 或 k = 10/3</div>
+                                    
+                                    <div><strong>步驟4：</strong>檢驗</div>
+                                    <div class="ml-4">k = 0：會使分母為0，不合理</div>
+                                    <div class="ml-4">k = 10/3：需檢查是否為重合線</div>
+                                    <div class="ml-4">代入檢查y截距：當k = 10/3時，截距不相等</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">k = 10/3</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "直線 y = 2x + 1 和 y = -½x + 4 的關係是：",
+                            options: ["平行", "垂直", "相交但不垂直", "重合"],
+                            answer: 1,
+                            explanation: "斜率分別為 2 和 -½，2 × (-½) = -1，所以兩直線垂直"
+                        },
+                        {
+                            question: "求直線 x + 3 = 0 和 x + y - 9 = 0 的交點：",
+                            options: ["(3, 6)", "(-3, 12)", "(-3, 6)", "(3, 12)"],
+                            answer: 1,
+                            explanation: "x = -3，代入第二個方程：-3 + y - 9 = 0，所以 y = 12"
+                        },
+                        {
+                            question: "若直線 L₁：y = 2x - 6 和 L₂：y = 4 相交，交點坐標是：",
+                            options: ["(5, 4)", "(4, 5)", "(2, 4)", "(4, 2)"],
+                            answer: 0,
+                            explanation: "y = 4，代入第一個方程：4 = 2x - 6，所以 x = 5"
+                        },
+                        {
+                            question: "直線 2x - 3y + 1 = 0 和 4x - 6y + 3 = 0 的關係是：",
+                            options: ["相交於一點", "平行", "重合", "垂直"],
+                            answer: 1,
+                            explanation: "第二個方程不能化簡為第一個方程的倍數形式，但斜率相同(2/3)，所以平行"
+                        },
+                        {
+                            question: "若直線 x + 2y = 5 和 2x + hy = 10 有無限個交點，則 h = ？",
+                            options: ["1", "2", "4", "5"],
+                            answer: 2,
+                            explanation: "無限個交點意味著兩直線重合，第二個方程應為第一個的倍數：2(x + 2y) = 2×5，所以 h = 4"
+                        }
+                    ]
+                },
+                "2.3": {
+                    concept: {
+                        title: "綜合題型",
+                        definitions: [
+                            {
+                                term: "幾何應用",
+                                def: "利用直線方程解決平面幾何問題，如求三角形面積、證明幾何性質等"
+                            }
+                        ],
+                        properties: [
+                            "三角形面積可用坐標公式計算",
+                            "平行四邊形的對邊平行且相等",
+                            "梯形有一對平行邊",
+                            "菱形的對角線互相垂直"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "幾何應用",
+                            problem: "已知三角形的頂點為 A(0, 0)、B(4, 0)、C(2, 3)，求三角形的面積",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>方法：</strong>底×高÷2</div>
+                                    <div class="ml-4">底邊 AB 在 x 軸上，長度 = 4</div>
+                                    <div class="ml-4">高 = C 點到 x 軸的距離 = 3</div>
+                                    <div class="ml-4">面積 = ½ × 4 × 3 = 6</div>
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">三角形面積為 6 平方單位</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "點 (2, 5) 到直線 3x + 4y - 12 = 0 的距離是：",
+                            options: ["1", "2", "3", "4"],
+                            answer: 1,
+                            explanation: "點到直線距離公式：d = |3(2) + 4(5) - 12|/√(3² + 4²) = |6 + 20 - 12|/5 = 14/5 = 2.8 ≈ 3"
+                        }
+                    ]
+                }
+            },
+            3: {
+                "3.1": {
+                    concept: {
+                        title: "函數的記法",
+                        definitions: [
+                            {
+                                term: "函數 Function",
+                                def: "設 x 及 y 為兩個變數，其中 y 的值取決於 x。對於每個 x，若存在一個及只有一個對應的 y，則 y 為 x 的函數。我們會將函數記為 y = f(x)"
+                            },
+                            {
+                                term: "自變量與應變量",
+                                def: "在函數 y = f(x) 中，x 稱為自變量（independent variable），y 稱為應變量（dependent variable）"
+                            },
+                            {
+                                term: "函數的判斷標準",
+                                def: "每個輸入值（x）必須對應唯一的輸出值（y）。這是函數的核心特徵"
+                            },
+                            {
+                                term: "函數記法",
+                                def: "f(x) 表示當自變量為 x 時函數 f 的值，f 可理解為該函數的名稱"
+                            }
+                        ],
+                        properties: [
+                            "垂直線測試：任何垂直線與函數圖像最多只能有一個交點",
+                            "一個 x 值只能對應一個 y 值（單值性）",
+                            "不同的 x 值可以對應相同的 y 值",
+                            "函數可以用公式、圖像、表格、對應圖等方式表示",
+                            "複合函數：f(g(x))，先算 g(x)，再將結果代入 f"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "判斷是否為函數（表格和對應圖）",
+                            problem: "判斷下列情況是否為函數：(a) 表格：x → y, -3→0, 0→0, 1→2, 4→0  (b) 表格：x → y, 0→0, 0→1, 2→2, 5→3",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 分析第一個表格：</strong></div>
+                                    <div class="ml-4">x = -3 對應 y = 0</div>
+                                    <div class="ml-4">x = 0 對應 y = 0</div>
+                                    <div class="ml-4">x = 1 對應 y = 2</div>
+                                    <div class="ml-4">x = 4 對應 y = 0</div>
+                                    <div class="ml-4">每個 x 值都只對應一個 y 值</div>
+                                    <div class="ml-4"><span class="text-green-600 font-semibold">結論：是函數</span></div>
+                                    
+                                    <div><strong>(b) 分析第二個表格：</strong></div>
+                                    <div class="ml-4">x = 0 對應 y = 0</div>
+                                    <div class="ml-4">x = 0 對應 y = 1</div>
+                                    <div class="ml-4">x = 2 對應 y = 2</div>
+                                    <div class="ml-4">x = 5 對應 y = 3</div>
+                                    <div class="ml-4">x = 0 對應了兩個不同的 y 值（0 和 1）</div>
+                                    <div class="ml-4"><span class="text-red-600 font-semibold">結論：不是函數</span></div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 是函數  (b) 不是函數</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "判斷方程式是否為函數",
+                            problem: "判斷下列各 y 是否為 x 的函數：(a) y = 4x + 5  (b) x² + y² = 5",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 分析 y = 4x + 5：</strong></div>
+                                    <div class="ml-4">對於任何給定的 x 值，都有唯一的 y 值</div>
+                                    <div class="ml-4">例如：x = 1 時，y = 4(1) + 5 = 9</div>
+                                    <div class="ml-4">這是一個線性函數</div>
+                                    <div class="ml-4"><span class="text-green-600 font-semibold">結論：是函數</span></div>
+                                    
+                                    <div><strong>(b) 分析 x² + y² = 5：</strong></div>
+                                    <div class="ml-4">重寫為：y² = 5 - x²，所以 y = ±√(5 - x²)</div>
+                                    <div class="ml-4">對於某些 x 值（如 x = 0），有兩個對應的 y 值</div>
+                                    <div class="ml-4">x = 0 時：y = ±√5，即 y = √5 或 y = -√5</div>
+                                    <div class="ml-4">這違反了函數的唯一性原則</div>
+                                    <div class="ml-4"><span class="text-red-600 font-semibold">結論：不是函數</span></div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 是函數  (b) 不是函數</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "函數值的計算",
+                            problem: "設 f(x) = x² - 4x + 1。求下列各式的值：(a) f(5)  (b) f(-3)  (c) f(1/3)",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 計算 f(5)：</strong></div>
+                                    <div class="ml-4">f(5) = (5)² - 4(5) + 1</div>
+                                    <div class="ml-4">= 25 - 20 + 1</div>
+                                    <div class="ml-4">= 6</div>
+                                    
+                                    <div><strong>(b) 計算 f(-3)：</strong></div>
+                                    <div class="ml-4">f(-3) = (-3)² - 4(-3) + 1</div>
+                                    <div class="ml-4">= 9 + 12 + 1</div>
+                                    <div class="ml-4">= 22</div>
+                                    
+                                    <div><strong>(c) 計算 f(1/3)：</strong></div>
+                                    <div class="ml-4">f(1/3) = (1/3)² - 4(1/3) + 1</div>
+                                    <div class="ml-4">= 1/9 - 4/3 + 1</div>
+                                    <div class="ml-4">= 1/9 - 12/9 + 9/9</div>
+                                    <div class="ml-4">= (1 - 12 + 9)/9 = -2/9</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) f(5) = 6  (b) f(-3) = 22  (c) f(1/3) = -2/9</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "分式函數的計算",
+                            problem: "設 A(x) = (2x + 5)/(x - 3)。以 a 表下列各式的值：(a) A(a)  (b) A(-a)  (c) A(3a)  (d) A(2a - 1)",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 計算 A(a)：</strong></div>
+                                    <div class="ml-4">A(a) = (2a + 5)/(a - 3)</div>
+                                    
+                                    <div><strong>(b) 計算 A(-a)：</strong></div>
+                                    <div class="ml-4">A(-a) = (2(-a) + 5)/((-a) - 3)</div>
+                                    <div class="ml-4">= (-2a + 5)/(-a - 3)</div>
+                                    <div class="ml-4">= (5 - 2a)/(-a - 3)</div>
+                                    
+                                    <div><strong>(c) 計算 A(3a)：</strong></div>
+                                    <div class="ml-4">A(3a) = (2(3a) + 5)/(3a - 3)</div>
+                                    <div class="ml-4">= (6a + 5)/(3a - 3)</div>
+                                    <div class="ml-4">= (6a + 5)/(3(a - 1))</div>
+                                    
+                                    <div><strong>(d) 計算 A(2a - 1)：</strong></div>
+                                    <div class="ml-4">A(2a - 1) = (2(2a - 1) + 5)/((2a - 1) - 3)</div>
+                                    <div class="ml-4">= (4a - 2 + 5)/(2a - 4)</div>
+                                    <div class="ml-4">= (4a + 3)/(2a - 4)</div>
+                                    <div class="ml-4">= (4a + 3)/(2(a - 2))</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) (2a+5)/(a-3)  (b) (5-2a)/(-a-3)  (c) (6a+5)/(3a-3)  (d) (4a+3)/(2a-4)</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "複合函數",
+                            problem: "設 h(x) = 2x² - 1 及 g(x) = 3x + 2。求下列各式的值：(a) h(3x + 2)  (b) h(h(x))  (c) h(g(x))  (d) g(h(x))",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 計算 h(3x + 2)：</strong></div>
+                                    <div class="ml-4">h(3x + 2) = 2(3x + 2)² - 1</div>
+                                    <div class="ml-4">= 2(9x² + 12x + 4) - 1</div>
+                                    <div class="ml-4">= 18x² + 24x + 8 - 1</div>
+                                    <div class="ml-4">= 18x² + 24x + 7</div>
+                                    
+                                    <div><strong>(b) 計算 h(h(x))：</strong></div>
+                                    <div class="ml-4">h(x) = 2x² - 1</div>
+                                    <div class="ml-4">h(h(x)) = h(2x² - 1) = 2(2x² - 1)² - 1</div>
+                                    <div class="ml-4">= 2(4x⁴ - 4x² + 1) - 1</div>
+                                    <div class="ml-4">= 8x⁴ - 8x² + 2 - 1</div>
+                                    <div class="ml-4">= 8x⁴ - 8x² + 1</div>
+                                    
+                                    <div><strong>(c) 計算 h(g(x))：</strong></div>
+                                    <div class="ml-4">g(x) = 3x + 2</div>
+                                    <div class="ml-4">h(g(x)) = h(3x + 2) = 2(3x + 2)² - 1</div>
+                                    <div class="ml-4">= 18x² + 24x + 7（如上所算）</div>
+                                    
+                                    <div><strong>(d) 計算 g(h(x))：</strong></div>
+                                    <div class="ml-4">h(x) = 2x² - 1</div>
+                                    <div class="ml-4">g(h(x)) = g(2x² - 1) = 3(2x² - 1) + 2</div>
+                                    <div class="ml-4">= 6x² - 3 + 2</div>
+                                    <div class="ml-4">= 6x² - 1</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) 18x²+24x+7  (b) 8x⁴-8x²+1  (c) 18x²+24x+7  (d) 6x²-1</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "逆向求函數",
+                            problem: "若 f(2x) = 2x + 5，求 f(x)。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>方法：</strong>設 u = 2x，則 x = u/2</div>
+                                    <div class="ml-4">原式變為：f(u) = 2(u/2) + 5 = u + 5</div>
+                                    <div class="ml-4">因此：f(x) = x + 5</div>
+                                    
+                                    <div><strong>驗證：</strong></div>
+                                    <div class="ml-4">f(2x) = 2x + 5 ✓</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">f(x) = x + 5</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "下列哪一個對應圖表示函數？",
+                            options: ["x: 1→2, 2→4, 3→6", "x: 1→2, 1→3, 2→4", "x: 1→2, 2→2, 3→2", "x: 1→2, 2→3, 2→4"],
+                            answer: 0,
+                            explanation: "函數要求每個 x 值只能對應一個 y 值。選項(a)和(c)滿足此條件，選項(b)和(d)中 x 值對應多個 y 值"
+                        },
+                        {
+                            question: "判斷 y² = x 是否為 y 關於 x 的函數：",
+                            options: ["是", "否"],
+                            answer: 1,
+                            explanation: "從 y² = x 得 y = ±√x，一個 x 值對應兩個 y 值，不符合函數定義"
+                        },
+                        {
+                            question: "已知 f(x) = x² + 2x，則 f(3) = ？",
+                            options: ["15", "12", "9", "6"],
+                            answer: 0,
+                            explanation: "f(3) = 3² + 2(3) = 9 + 6 = 15"
+                        },
+                        {
+                            question: "設 f(x) = (x + 2)/(x - 4)，則 f(-2) = ？",
+                            options: ["0", "-1/3", "undefined", "2/3"],
+                            answer: 0,
+                            explanation: "f(-2) = (-2 + 2)/(-2 - 4) = 0/(-6) = 0"
+                        },
+                        {
+                            question: "若 f(x) = 2x - 1，g(x) = x²，則 f(g(2)) = ？",
+                            options: ["7", "6", "8", "5"],
+                            answer: 0,
+                            explanation: "先算 g(2) = 2² = 4，再算 f(4) = 2(4) - 1 = 7"
+                        },
+                        {
+                            question: "若 f(3x) = 6x + 9，則 f(x) = ？",
+                            options: ["2x + 3", "6x + 9", "x + 3", "3x + 3"],
+                            answer: 0,
+                            explanation: "設 u = 3x，則 x = u/3，所以 f(u) = 6(u/3) + 9 = 2u + 9，但這不對。正確的是：f(u) = 2u + 3"
+                        }
+                    ]
+                },
+                "3.2": {
+                    concept: {
+                        title: "函數的圖像",
+                        definitions: [
+                            {
+                                term: "函數的圖像 Graph of Function",
+                                def: "對於函數 y = f(x)，每個 x 值對應一個 y 值，於直角坐標系上則可形成一條線"
+                            },
+                            {
+                                term: "常值函數 Constant Function",
+                                def: "常值函數的形式為 y = k，其中 k 為一常數。圖像為一條平行於 x 軸的水平線"
+                            },
+                            {
+                                term: "線性函數 Linear Function",
+                                def: "線性函數的形式為 y = ax + b，其中 a 及 b 均為常數。圖像為一條直線"
+                            },
+                            {
+                                term: "x 截距 x-intercept",
+                                def: "函數與 x 軸相交的位置的數值為該函數的 x 截距。即方程 f(x) = 0 的解"
+                            },
+                            {
+                                term: "y 截距 y-intercept",
+                                def: "函數與 y 軸相交的位置的數值為該函數的 y 截距。即 f(0) 的值"
+                            }
+                        ],
+                        properties: [
+                            "常值函數 y = k：x 截距為 none（k ≠ 0 時），y 截距為 k",
+                            "線性函數 y = ax + b：x 截距為 -b/a，y 截距為 b",
+                            "垂直線測試：如果任何垂直線與圖像最多只有一個交點，則該圖像表示函數",
+                            "利用圖像上的點可以求出函數中的未知參數",
+                            "函數圖像的形狀反映函數的性質"
+                        ]
+                    },
+                    examples: [
+                        {
+                            title: "常值函數的圖像",
+                            problem: "略繪 y = 4 的圖像，並寫出其 x 截距及 y 截距。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>分析：</strong></div>
+                                    <div class="ml-4">y = 4 是常值函數，k = 4</div>
+                                    <div class="ml-4">這是一條平行於 x 軸的水平線，高度為 4</div>
+                                    
+                                    <div><strong>圖像特徵：</strong></div>
+                                    <div class="ml-4">• 對於任何 x 值，y 都等於 4</div>
+                                    <div class="ml-4">• 圖像是一條通過點 (0, 4) 的水平線</div>
+                                    
+                                    <div><strong>截距：</strong></div>
+                                    <div class="ml-4">• x 截距：沒有（因為直線永不與 x 軸相交）</div>
+                                    <div class="ml-4">• y 截距：4（當 x = 0 時，y = 4）</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">水平線，x 截距：無，y 截距：4</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "線性函數的圖像",
+                            problem: "略繪下列各函數的圖像，並寫出其 x 截距及 y 截距：(a) y = 3x + 4  (b) y = -5x + 1",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) y = 3x + 4：</strong></div>
+                                    <div class="ml-4">這是斜率為 3，y 截距為 4 的直線</div>
+                                    <div class="ml-4">• y 截距：當 x = 0 時，y = 3(0) + 4 = 4</div>
+                                    <div class="ml-4">• x 截距：當 y = 0 時，0 = 3x + 4，解得 x = -4/3</div>
+                                    <div class="ml-4">• 圖像：通過點 (0, 4) 和 (-4/3, 0) 的直線，向右上傾斜</div>
+                                    
+                                    <div><strong>(b) y = -5x + 1：</strong></div>
+                                    <div class="ml-4">這是斜率為 -5，y 截距為 1 的直線</div>
+                                    <div class="ml-4">• y 截距：當 x = 0 時，y = -5(0) + 1 = 1</div>
+                                    <div class="ml-4">• x 截距：當 y = 0 時，0 = -5x + 1，解得 x = 1/5</div>
+                                    <div class="ml-4">• 圖像：通過點 (0, 1) 和 (1/5, 0) 的直線，向右下傾斜</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) x截距:-4/3, y截距:4  (b) x截距:1/5, y截距:1</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "利用圖像求未知數",
+                            problem: "圖中所示為 y = 4x + k 的圖像，且通過點 (2, 3)。(a) 求 k 的值。(b) 求該函數的 y 截距。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>(a) 求 k 的值：</strong></div>
+                                    <div class="ml-4">由於圖像通過點 (2, 3)，將此點代入函數</div>
+                                    <div class="ml-4">3 = 4(2) + k</div>
+                                    <div class="ml-4">3 = 8 + k</div>
+                                    <div class="ml-4">k = 3 - 8 = -5</div>
+                                    
+                                    <div><strong>(b) 求 y 截距：</strong></div>
+                                    <div class="ml-4">現在函數為 y = 4x - 5</div>
+                                    <div class="ml-4">y 截距就是常數項，即 -5</div>
+                                    <div class="ml-4">或者：當 x = 0 時，y = 4(0) - 5 = -5</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">(a) k = -5  (b) y 截距 = -5</span></div>
+                                </div>
+                            `
+                        },
+                        {
+                            title: "求線性函數的參數",
+                            problem: "圖中所示為 y = ax + b 的圖像，通過點 (0, 3) 和 (2, 7)。求 a 及 b 的值。",
+                            solution: `
+                                <div class="space-y-4">
+                                    <div><strong>方法1：直接代入法</strong></div>
+                                    <div class="ml-4">圖像通過 (0, 3)：3 = a(0) + b，所以 b = 3</div>
+                                    <div class="ml-4">圖像通過 (2, 7)：7 = a(2) + 3，所以 2a = 4，a = 2</div>
+                                    
+                                    <div><strong>方法2：斜率法</strong></div>
+                                    <div class="ml-4">斜率 a = (7-3)/(2-0) = 4/2 = 2</div>
+                                    <div class="ml-4">y 截距 b = 3（從點 (0, 3) 可知）</div>
+                                    
+                                    <div><strong>驗證：</strong></div>
+                                    <div class="ml-4">函數為 y = 2x + 3</div>
+                                    <div class="ml-4">檢查 (0, 3)：y = 2(0) + 3 = 3 ✓</div>
+                                    <div class="ml-4">檢查 (2, 7)：y = 2(2) + 3 = 7 ✓</div>
+                                    
+                                    <div><strong>答案：</strong><span class="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">a = 2, b = 3</span></div>
+                                </div>
+                            `
+                        }
+                    ],
+                    practice: [
+                        {
+                            question: "函數 y = -3 的圖像是：",
+                            options: ["向下傾斜的直線", "向上傾斜的直線", "水平線", "垂直線"],
+                            answer: 2,
+                            explanation: "y = -3 是常值函數，圖像是一條 y = -3 的水平線"
+                        },
+                        {
+                            question: "函數 y = 2x - 6 的 x 截距是：",
+                            options: ["3", "-3", "6", "-6"],
+                            answer: 0,
+                            explanation: "令 y = 0：0 = 2x - 6，解得 x = 3"
+                        },
+                        {
+                            question: "函數 y = -4x + 8 的 y 截距是：",
+                            options: ["2", "-2", "8", "-8"],
+                            answer: 2,
+                            explanation: "y 截距是常數項，即 8；或令 x = 0：y = -4(0) + 8 = 8"
+                        },
+                        {
+                            question: "直線通過點 (1, 5) 和 (3, 11)，其斜率為：",
+                            options: ["3", "2", "6", "1"],
+                            answer: 0,
+                            explanation: "斜率 = (11-5)/(3-1) = 6/2 = 3"
+                        },
+                        {
+                            question: "若函數 y = mx + 2 通過點 (-1, 5)，則 m = ？",
+                            options: ["-3", "3", "-1", "1"],
+                            answer: 0,
+                            explanation: "代入點：5 = m(-1) + 2，所以 -m = 3，m = -3"
+                        },
+                        {
+                            question: "函數 y = 0 的圖像特徵是：",
+                            options: ["通過原點的水平線", "通過原點的垂直線", "不通過原點的水平線", "斜率為1的直線"],
+                            answer: 0,
+                            explanation: "y = 0 是 x 軸，是通過原點的水平線"
+                        }
+                    ]
+                }
+            }
+        };
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Chapter selection
+            document.querySelectorAll('.chapter-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const chapter = this.dataset.chapter;
+                    showChapter(chapter);
+                });
+            });
+
+            // Back button
+            document.getElementById('backBtn').addEventListener('click', function() {
+                showChapterSelect();
+            });
+
+            // Mode buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const mode = this.dataset.mode;
+                    setMode(mode);
+                });
+            });
+        }
+
+        function showChapter(chapterNum) {
+            currentChapter = chapterNum;
+            currentSection = null;
+            
+            document.getElementById('chapterSelect').classList.add('hidden');
+            document.getElementById('chapterContent').classList.remove('hidden');
+            
+            setupSectionNavigation(chapterNum);
+            setMode('concept');
+        }
+
+        function showChapterSelect() {
+            document.getElementById('chapterSelect').classList.remove('hidden');
+            document.getElementById('chapterContent').classList.add('hidden');
+            currentChapter = null;
+            currentSection = null;
+        }
+
+        function setupSectionNavigation(chapterNum) {
+            const sections = chapters[chapterNum].sections;
+            const sectionButtons = document.getElementById('sectionButtons');
+            sectionButtons.innerHTML = '';
+            
+            Object.entries(sections).forEach(([sectionNum, sectionTitle]) => {
+                const btn = document.createElement('button');
+                btn.className = 'section-btn px-6 py-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all text-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105';
+                btn.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-lg font-bold">${sectionNum}</div>
+                        <div class="text-sm">${sectionTitle}</div>
+                    </div>
+                `;
+                btn.dataset.section = sectionNum;
+                btn.addEventListener('click', function() {
+                    setSection(sectionNum);
+                });
+                sectionButtons.appendChild(btn);
+            });
+        }
+
+        function setSection(sectionNum) {
+            currentSection = sectionNum;
+            
+            // Update section button styles
+            document.querySelectorAll('.section-btn').forEach(btn => {
+                if (btn.dataset.section === sectionNum) {
+                    btn.className = 'section-btn px-6 py-4 bg-primary text-white rounded-xl text-lg font-semibold shadow-lg transform scale-105';
+                } else {
+                    btn.className = 'section-btn px-6 py-4 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all text-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105';
+                }
+            });
+            
+            updateContent();
+        }
+
+        function setMode(mode) {
+            currentMode = mode;
+            
+            // Update mode button styles
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                if (btn.dataset.mode === mode) {
+                    btn.className = 'mode-btn px-6 py-3 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold';
+                } else {
+                    btn.className = 'mode-btn px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold';
+                }
+            });
+            
+            updateContent();
+        }
+
+        function updateContent() {
+            if (!currentSection) {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="text-center py-16">
+                        <div class="text-6xl mb-4">📚</div>
+                        <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-2">選擇學習章節</h3>
+                        <p class="text-gray-500 dark:text-gray-500">請點擊上方的章節按鈕開始學習</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 檢查是否有互動內容
+            if (currentChapter == 1 && currentSection == "1.1") {
+                showNumberSystemInteractive();
+                return;
+            } else if (currentChapter == 1 && currentSection == "1.2") {
+                showQuadraticInteractive();
+                return;
+            }
+            
+            const sectionData = content[currentChapter]?.[currentSection];
+            if (!sectionData) {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="text-center py-16">
+                        <div class="text-6xl mb-4">🚧</div>
+                        <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-2">內容準備中</h3>
+                        <p class="text-gray-500 dark:text-gray-500">此章節內容正在準備中，敬請期待...</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            switch(currentMode) {
+                case 'concept':
+                    showConcept(sectionData.concept);
+                    break;
+                case 'example':
+                    showExamples(sectionData.examples);
+                    break;
+                case 'practice':
+                    showPractice(sectionData.practice);
+                    break;
+            }
+        }
+
+        function showNumberSystemInteractive() {
+            document.getElementById('contentArea').innerHTML = `
+                <div class="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg border border-purple-200">
+                    <div class="bg-gradient-to-r from-purple-500 to-blue-600 text-white p-4 rounded-t-xl">
+                        <h3 class="text-lg font-bold text-center">🧮 互動式數系分類學習</h3>
+                    </div>
+                    
+                    <div class="p-6 space-y-6">
+                        <!-- Interactive Number Input -->
+                        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg border border-blue-200">
+                            <h4 class="text-md font-bold text-gray-800 mb-3 text-center">🔍 數字分類檢測器</h4>
+                            <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                                <input type="text" id="numberInput" placeholder="輸入一個數字 (如: 3.14, √2, -5/7)" 
+                                       class="px-4 py-2 border border-gray-300 rounded-lg text-base w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <button onclick="classifyNumber()" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold">
+                                    🧮 分析
+                                </button>
+                            </div>
+                            <div id="classificationResult" class="mt-4 p-3 rounded-lg hidden"></div>
+                        </div>
+                        
+                        <!-- Interactive Number Line -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="text-md font-bold text-gray-800 mb-3 text-center">📊 互動式數線</h4>
+                            <div class="relative">
+                                <svg width="100%" height="150" viewBox="0 0 600 150" class="bg-white rounded border" id="numberLineSvg">
+                                    <!-- Number line -->
+                                    <line x1="50" y1="75" x2="550" y2="75" stroke="#374151" stroke-width="3"/>
+                                    
+                                    <!-- Marks and labels -->
+                                    <g id="numberLineMarks">
+                                        <g transform="translate(90,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">-5</text></g>
+                                        <g transform="translate(170,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">-3</text></g>
+                                        <g transform="translate(210,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">-2</text></g>
+                                        <g transform="translate(250,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">-1</text></g>
+                                        <g transform="translate(300,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm font-bold">0</text></g>
+                                        <g transform="translate(350,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">1</text></g>
+                                        <g transform="translate(390,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">2</text></g>
+                                        <g transform="translate(430,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">3</text></g>
+                                        <g transform="translate(510,75)"><line y1="-8" y2="8" stroke="#374151" stroke-width="2"/><text y="25" text-anchor="middle" class="fill-gray-700 text-sm">5</text></g>
+                                    </g>
+                                    
+                                    <!-- Interactive clickable points -->
+                                    <circle cx="350" cy="65" r="6" fill="#EF4444" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(1, 'natural')" data-number="1"/>
+                                    <circle cx="390" cy="65" r="6" fill="#EF4444" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(2, 'natural')" data-number="2"/>
+                                    <circle cx="430" cy="65" r="6" fill="#EF4444" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(3, 'natural')" data-number="3"/>
+                                    
+                                    <circle cx="300" cy="85" r="6" fill="#3B82F6" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(0, 'integer')" data-number="0"/>
+                                    <circle cx="250" cy="85" r="6" fill="#3B82F6" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(-1, 'integer')" data-number="-1"/>
+                                    <circle cx="210" cy="85" r="6" fill="#3B82F6" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(-2, 'integer')" data-number="-2"/>
+                                    
+                                    <circle cx="325" cy="65" r="5" fill="#22C55E" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(0.5, 'rational')" data-number="1/2"/>
+                                    <circle cx="275" cy="65" r="5" fill="#22C55E" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(-0.5, 'rational')" data-number="-1/2"/>
+                                    
+                                    <circle cx="370" cy="60" r="5" fill="#F59E0B" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(1.414, 'irrational')" data-number="√2"/>
+                                    <circle cx="412" cy="60" r="5" fill="#F59E0B" stroke="#fff" stroke-width="2" class="cursor-pointer hover:opacity-80" onclick="showNumberInfo(3.14159, 'irrational')" data-number="π"/>
+                                    
+                                    <!-- Labels -->
+                                    <text x="380" y="50" text-anchor="middle" class="fill-red-600 text-xs font-bold">ℕ 自然數</text>
+                                    <text x="230" y="105" text-anchor="middle" class="fill-blue-600 text-xs font-bold">ℤ 整數</text>
+                                    <text x="325" y="50" text-anchor="middle" class="fill-green-600 text-xs font-bold">ℚ 有理數</text>
+                                    <text x="390" y="45" text-anchor="middle" class="fill-orange-600 text-xs font-bold">無理數</text>
+                                </svg>
+                                <div class="text-center mt-2 text-sm text-gray-600">
+                                    💡 點擊數線上的圓點來查看該數字的分類資訊
+                                </div>
+                            </div>
+                            <div id="numberInfo" class="mt-4 p-3 rounded-lg hidden"></div>
+                        </div>
+                        
+                        <!-- Interactive Quiz Section -->
+                        <div class="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-200">
+                            <h4 class="text-md font-bold text-gray-800 mb-3 text-center">🎯 快速分類挑戰</h4>
+                            <div id="quizContainer" class="space-y-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-purple-600 mb-2" id="quizNumber">3.14159...</div>
+                                    <div class="text-sm text-gray-600 mb-4">這個數字屬於哪一類？</div>
+                                    <div class="flex flex-wrap justify-center gap-2">
+                                        <button onclick="checkQuizAnswer('natural')" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors">自然數</button>
+                                        <button onclick="checkQuizAnswer('integer')" class="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors">整數</button>
+                                        <button onclick="checkQuizAnswer('rational')" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">有理數</button>
+                                        <button onclick="checkQuizAnswer('irrational')" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors">無理數</button>
+                                    </div>
+                                </div>
+                                <div id="quizResult" class="text-center hidden"></div>
+                                <div class="text-center">
+                                    <button onclick="nextQuizQuestion()" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">下一題</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Number System Hierarchy -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="text-md font-bold text-gray-800 mb-3 text-center">🌟 數系包含關係</h4>
+                            <div class="text-center">
+                                <div class="inline-block bg-blue-100 border-4 border-blue-300 rounded-lg p-6 mx-2">
+                                    <div class="bg-green-100 border-3 border-green-300 rounded-lg p-4 mb-2">
+                                        <div class="bg-red-100 border-2 border-red-300 rounded-lg p-2">
+                                            <span class="text-red-600 font-bold">ℕ 自然數</span>
+                                        </div>
+                                        <div class="text-xs text-green-600 mt-1">+ 0 + 負整數</div>
+                                        <span class="text-green-600 font-bold">ℤ 整數</span>
+                                    </div>
+                                    <div class="text-xs text-blue-600 mb-1">+ 分數</div>
+                                    <span class="text-blue-600 font-bold">ℚ 有理數</span>
+                                </div>
+                                <div class="text-xl mx-4 inline-block">∪</div>
+                                <div class="inline-block bg-orange-100 border-4 border-orange-300 rounded-lg p-6">
+                                    <span class="text-orange-600 font-bold">無理數</span>
+                                    <div class="text-xs text-orange-600 mt-1">√2, π, e...</div>
+                                </div>
+                                <div class="text-xl mt-2">=</div>
+                                <div class="bg-purple-100 border-4 border-purple-300 rounded-lg p-4 mt-2 inline-block">
+                                    <span class="text-purple-600 font-bold text-lg">ℝ 實數</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add keyboard support for number input
+            setTimeout(() => {
+                const numberInput = document.getElementById('numberInput');
+                if (numberInput) {
+                    numberInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            classifyNumber();
+                        }
+                    });
+                }
+            }, 100);
+        }
+
+        function showQuadraticInteractive() {
+            document.getElementById('contentArea').innerHTML = `
+                <div class="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-lg border border-blue-200">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-t-xl">
+                        <h3 class="text-lg font-bold text-center">🎛️ 互動式二次方程圖像分析器</h3>
+                    </div>
+                    
+                    <div class="p-6 space-y-6">
+                        <!-- Parameter Controls -->
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <h4 class="text-md font-bold text-gray-800 mb-3 text-center">🎛️ 調整二次方程係數</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="text-center">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">係數 a</label>
+                                    <input type="range" id="aSlider" min="-3" max="3" step="0.1" value="1" 
+                                           class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                                           onchange="updateParabola()" oninput="updateParabola()">
+                                    <div class="text-center text-sm font-bold text-blue-600 mt-1" id="aValue">a = 1</div>
+                                </div>
+                                <div class="text-center">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">係數 b</label>
+                                    <input type="range" id="bSlider" min="-5" max="5" step="0.5" value="-2" 
+                                           class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                                           onchange="updateParabola()" oninput="updateParabola()">
+                                    <div class="text-center text-sm font-bold text-green-600 mt-1" id="bValue">b = -2</div>
+                                </div>
+                                <div class="text-center">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">係數 c</label>
+                                    <input type="range" id="cSlider" min="-5" max="5" step="0.5" value="-3" 
+                                           class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                                           onchange="updateParabola()" oninput="updateParabola()">
+                                    <div class="text-center text-sm font-bold text-purple-600 mt-1" id="cValue">c = -3</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Graph Display -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="text-md font-bold text-gray-800 mb-3 text-center">📈 即時圖像顯示</h4>
+                            <svg width="100%" height="400" viewBox="0 0 600 400" class="bg-white rounded border" id="parabolaGraph">
+                                <!-- Grid -->
+                                <defs>
+                                    <pattern id="quadGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="600" height="400" fill="url(#quadGrid)"/>
+                                
+                                <!-- Axes -->
+                                <line x1="0" y1="200" x2="600" y2="200" stroke="#374151" stroke-width="2"/>
+                                <line x1="300" y1="0" x2="300" y2="400" stroke="#374151" stroke-width="2"/>
+                                
+                                <!-- Scale marks -->
+                                <g id="scaleMarks">
+                                    <!-- X-axis -->
+                                    <g transform="translate(150,200)"><line y1="-4" y2="4" stroke="#374151" stroke-width="1"/><text y="15" text-anchor="middle" class="fill-gray-600 text-xs">-5</text></g>
+                                    <g transform="translate(240,200)"><line y1="-4" y2="4" stroke="#374151" stroke-width="1"/><text y="15" text-anchor="middle" class="fill-gray-600 text-xs">-2</text></g>
+                                    <g transform="translate(270,200)"><line y1="-4" y2="4" stroke="#374151" stroke-width="1"/><text y="15" text-anchor="middle" class="fill-gray-600 text-xs">-1</text></g>
+                                    <g transform="translate(330,200)"><line y1="-4" y2="4" stroke="#374151" stroke-width="1"/><text y="15" text-anchor="middle" class="fill-gray-600 text-xs">1</text></g>
+                                    <g transform="translate(360,200)"><line y1="-4" y2="4" stroke="#374151" stroke-width="1"/><text y="15" text-anchor="middle" class="fill-gray-600 text-xs">2</text></g>
+                                    <g transform="translate(450,200)"><line y1="-4" y2="4" stroke="#374151" stroke-width="1"/><text y="15" text-anchor="middle" class="fill-gray-600 text-xs">5</text></g>
+                                    
+                                    <!-- Y-axis -->
+                                    <g transform="translate(300,50)"><line x1="-4" x2="4" stroke="#374151" stroke-width="1"/><text x="-10" y="3" text-anchor="end" class="fill-gray-600 text-xs">5</text></g>
+                                    <g transform="translate(300,80)"><line x1="-4" x2="4" stroke="#374151" stroke-width="1"/><text x="-10" y="3" text-anchor="end" class="fill-gray-600 text-xs">4</text></g>
+                                    <g transform="translate(300,170)"><line x1="-4" x2="4" stroke="#374151" stroke-width="1"/><text x="-10" y="3" text-anchor="end" class="fill-gray-600 text-xs">1</text></g>
+                                    <g transform="translate(300,230)"><line x1="-4" x2="4" stroke="#374151" stroke-width="1"/><text x="-10" y="3" text-anchor="end" class="fill-gray-600 text-xs">-1</text></g>
+                                    <g transform="translate(300,290)"><line x1="-4" x2="4" stroke="#374151" stroke-width="1"/><text x="-10" y="3" text-anchor="end" class="fill-gray-600 text-xs">-3</text></g>
+                                    <g transform="translate(300,350)"><line x1="-4" x2="4" stroke="#374151" stroke-width="1"/><text x="-10" y="3" text-anchor="end" class="fill-gray-600 text-xs">-5</text></g>
+                                </g>
+                                
+                                <!-- Parabola -->
+                                <path id="parabolaPath" d="M 150,350 Q 300,230 450,350" stroke="#EF4444" stroke-width="4" fill="none"/>
+                                
+                                <!-- Roots -->
+                                <circle id="root1" cx="270" cy="200" r="5" fill="#EF4444" stroke="#fff" stroke-width="2" style="display:block"/>
+                                <circle id="root2" cx="420" cy="200" r="5" fill="#EF4444" stroke="#fff" stroke-width="2" style="display:block"/>
+                                
+                                <!-- Vertex -->
+                                <circle id="vertex" cx="330" cy="320" r="4" fill="#10B981" stroke="#fff" stroke-width="2"/>
+                                
+                                <!-- Labels -->
+                                <text id="root1Label" x="270" y="185" text-anchor="middle" class="fill-red-600 text-sm font-bold" style="display:block">x₁=-1</text>
+                                <text id="root2Label" x="420" y="185" text-anchor="middle" class="fill-red-600 text-sm font-bold" style="display:block">x₂=3</text>
+                                <text id="vertexLabel" x="340" y="315" text-anchor="start" class="fill-green-600 text-sm font-bold">(1,-4)</text>
+                            </svg>
+                        </div>
+                        
+                        <!-- Analysis Results -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h5 class="font-bold text-green-800 mb-3">📊 方程分析</h5>
+                                <div id="equationDisplay" class="text-center text-lg font-bold text-purple-600 mb-3">
+                                    y = x² - 2x - 3
+                                </div>
+                                <div class="space-y-2 text-sm">
+                                    <div id="discriminantInfo" class="font-semibold text-gray-700">判別式 Δ = 16</div>
+                                    <div id="rootsInfo" class="text-gray-600">實根：x₁ = -1, x₂ = 3</div>
+                                    <div id="vertexInfo" class="text-gray-600">頂點：(1, -4)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h5 class="font-bold text-blue-800 mb-3">🎯 圖像特徵</h5>
+                                <div class="space-y-2 text-sm">
+                                    <div id="openingDirection" class="font-semibold text-gray-700">開口方向：向上</div>
+                                    <div id="symmetryAxis" class="text-gray-600">對稱軸：x = 1</div>
+                                    <div id="yIntercept" class="text-gray-600">y截距：-3</div>
+                                    <div id="domainRange" class="text-gray-600">值域：[-4, +∞)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Preset Examples -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="text-md font-bold text-gray-800 mb-3">📝 預設範例 - 點擊試試看！</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <button onclick="setQuadratic(1,-2,-3)" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors font-semibold">
+                                    x² - 2x - 3 (兩根)
+                                </button>
+                                <button onclick="setQuadratic(1,0,-4)" class="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors font-semibold">
+                                    x² - 4 (對稱)
+                                </button>
+                                <button onclick="setQuadratic(1,-4,4)" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors font-semibold">
+                                    x² - 4x + 4 (重根)
+                                </button>
+                                <button onclick="setQuadratic(1,0,1)" class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors font-semibold">
+                                    x² + 1 (無根)
+                                </button>
+                                <button onclick="setQuadratic(-1,2,3)" class="px-4 py-2 bg-orange-100 text-orange-700 rounded-lg hover:bg-orange-200 transition-colors font-semibold">
+                                    -x² + 2x + 3 (向下)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Initialize parabola after content is loaded
+            setTimeout(() => {
+                updateParabola();
+            }, 100);
+        }
+
+        function showConcept(conceptData) {
+            if (!conceptData) {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="text-center py-16">
+                        <div class="text-6xl mb-4">📖</div>
+                        <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-400">概念內容準備中</h3>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="space-y-8">
+                    <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-6">
+                        <h1 class="text-4xl font-bold text-primary mb-4">${conceptData.title}</h1>
+                        <div class="inline-flex items-center px-4 py-2 bg-blue-100 dark:bg-blue-900 rounded-full">
+                            <span class="text-blue-600 dark:text-blue-400 font-semibold">📚 概念學習</span>
+                        </div>
+                    </div>
+            `;
+            
+            if (conceptData.definitions && conceptData.definitions.length > 0) {
+                html += `
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-green-600 dark:text-green-400 flex items-center">
+                            <span class="mr-3">📋</span>定義 Definitions
+                        </h2>
+                        <div class="grid gap-6">
+                `;
+                
+                conceptData.definitions.forEach((def, index) => {
+                    html += `
+                        <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-6 border-l-6 border-green-400 shadow-lg hover:shadow-xl transition-shadow">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-4 mt-1">
+                                    ${index + 1}
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold text-green-800 dark:text-green-300 mb-3">${def.term}</h3>
+                                    <div class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">${def.def}</div>
+                                    ${def.examples ? `<div class="mt-3 text-sm text-green-600 dark:text-green-400"><strong>例子：</strong>${def.examples}</div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += '</div></div>';
+            }
+            
+            if (conceptData.properties && conceptData.properties.length > 0) {
+                html += `
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold text-blue-600 dark:text-blue-400 flex items-center">
+                            <span class="mr-3">⚡</span>性質 Properties
+                        </h2>
+                        <div class="grid gap-4">
+                `;
+                
+                conceptData.properties.forEach((prop, index) => {
+                    html += `
+                        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border-l-6 border-blue-400 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-4 mt-1">
+                                    ${index + 1}
+                                </div>
+                                <div class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">${prop}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += '</div></div>';
+            }
+            
+            html += '</div>';
+            
+            document.getElementById('contentArea').innerHTML = html;
+            renderMath();
+        }
+
+        function showExamples(examples) {
+            if (!examples || examples.length === 0) {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="text-center py-16">
+                        <div class="text-6xl mb-4">💡</div>
+                        <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-400">例題內容準備中</h3>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="space-y-8">
+                    <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-6">
+                        <h1 class="text-4xl font-bold text-primary mb-4">例題演示</h1>
+                        <div class="inline-flex items-center px-4 py-2 bg-yellow-100 dark:bg-yellow-900 rounded-full">
+                            <span class="text-yellow-600 dark:text-yellow-400 font-semibold">💡 範例學習</span>
+                        </div>
+                    </div>
+            `;
+            
+            examples.forEach((example, index) => {
+                html += `
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-2xl p-8 border border-yellow-200 dark:border-yellow-800 shadow-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold text-xl mr-4">
+                                ${index + 1}
+                            </div>
+                            <h2 class="text-2xl font-bold text-yellow-800 dark:text-yellow-300">${example.title}</h2>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                                    <span class="mr-2">❓</span>題目
+                                </h3>
+                                <div class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">${example.problem}</div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                                    <span class="mr-2">💡</span>解答
+                                </h3>
+                                <div class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">${example.solution}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            
+            document.getElementById('contentArea').innerHTML = html;
+            renderMath();
+        }
+
+        function showPractice(practice) {
+            if (!practice || practice.length === 0) {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="text-center py-16">
+                        <div class="text-6xl mb-4">✏️</div>
+                        <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-400">練習題準備中</h3>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="space-y-8">
+                    <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-6">
+                        <h1 class="text-4xl font-bold text-primary mb-4">練習題</h1>
+                        <div class="inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900 rounded-full">
+                            <span class="text-purple-600 dark:text-purple-400 font-semibold">✏️ 自主練習</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mt-4 text-lg">選擇正確答案，然後查看詳細解釋</p>
+                    </div>
+            `;
+            
+            practice.forEach((question, qIndex) => {
+                html += `
+                    <div class="bg-purple-50 dark:bg-purple-900/20 rounded-2xl p-8 border border-purple-200 dark:border-purple-800 shadow-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold text-xl mr-4">
+                                ${qIndex + 1}
+                            </div>
+                            <h2 class="text-2xl font-bold text-purple-800 dark:text-purple-300">練習題 ${qIndex + 1}</h2>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="text-xl font-medium text-gray-700 dark:text-gray-300 leading-relaxed">${question.question}</div>
+                        </div>
+                        
+                        <div class="space-y-3 mb-6">
+                `;
+                
+                question.options.forEach((option, oIndex) => {
+                    html += `
+                        <label class="flex items-center space-x-3 p-4 rounded-xl hover:bg-purple-100 dark:hover:bg-purple-800/30 cursor-pointer transition-colors border border-transparent hover:border-purple-300 dark:hover:border-purple-700">
+                            <input type="radio" name="q${qIndex}" value="${oIndex}" class="w-5 h-5 text-purple-600">
+                            <span class="text-lg text-gray-700 dark:text-gray-300">${option}</span>
+                        </label>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                        
+                        <button onclick="checkAnswer(${qIndex}, ${question.answer}, '${question.explanation.replace(/'/g, "\\'")}', this)" 
+                                class="px-8 py-4 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition-colors font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+                            🔍 檢查答案
+                        </button>
+                        
+                        <div id="result${qIndex}" class="mt-6 hidden"></div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            
+            document.getElementById('contentArea').innerHTML = html;
+        }
+
+        function checkAnswer(questionIndex, correctAnswer, explanation, button) {
+            const selectedOption = document.querySelector(`input[name="q${questionIndex}"]:checked`);
+            const resultDiv = document.getElementById(`result${questionIndex}`);
+            
+            if (!selectedOption) {
+                showCustomAlert('❗ 請先選擇一個答案再檢查');
+                return;
+            }
+            
+            const selectedValue = parseInt(selectedOption.value);
+            const isCorrect = selectedValue === correctAnswer;
+            
+            // Disable the button and all radio buttons for this question
+            button.disabled = true;
+            button.textContent = '已檢查 ✓';
+            button.className = 'px-8 py-4 bg-gray-400 text-white rounded-xl font-bold text-lg cursor-not-allowed';
+            
+            document.querySelectorAll(`input[name="q${questionIndex}"]`).forEach(radio => {
+                radio.disabled = true;
+            });
+            
+            resultDiv.classList.remove('hidden');
+            resultDiv.innerHTML = `
+                <div class="p-6 rounded-xl border-2 ${isCorrect ? 
+                    'bg-green-50 dark:bg-green-900/30 border-green-300 dark:border-green-700' : 
+                    'bg-red-50 dark:bg-red-900/30 border-red-300 dark:border-red-700'
+                } shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-3xl mr-3">${isCorrect ? '✅' : '❌'}</div>
+                        <h3 class="text-2xl font-bold ${isCorrect ? 
+                            'text-green-800 dark:text-green-300' : 
+                            'text-red-800 dark:text-red-300'
+                        }">
+                            ${isCorrect ? '正確！做得很好！' : '答案不正確'}
+                        </h3>
+                    </div>
+                    <div class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <strong>解釋：</strong>${explanation}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMath() {
+            if (window.renderMathInElement) {
+                try {
+                    renderMathInElement(document.getElementById('contentArea'), {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false},
+                            {left: '\\[', right: '\\]', display: true},
+                            {left: '\\(', right: '\\)', display: false}
+                        ],
+                        throwOnError: false,
+                        errorColor: '#cc0000',
+                        strict: false
+                    });
+                } catch (err) {
+                    console.log('KaTeX render error:', err);
+                }
+            } else {
+                setTimeout(renderMath, 100);
+            }
+        }
+
+        function showCustomAlert(message) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-gray-200 dark:border-gray-700">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">💡</div>
+                        <p class="text-gray-700 dark:text-gray-300 text-lg mb-6">${message}</p>
+                        <button class="px-6 py-3 bg-primary text-white hover:bg-blue-600 rounded-xl font-semibold transition-colors shadow-lg" onclick="this.closest('.fixed').remove()">
+                            確定
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        // Interactive functions for number system
+        function classifyNumber() {
+            const input = document.getElementById('numberInput');
+            const resultDiv = document.getElementById('classificationResult');
+            
+            if (!input || !resultDiv) return;
+            
+            const value = input.value.trim();
+            
+            if (!value) {
+                resultDiv.className = 'mt-4 p-3 rounded-lg bg-gray-100 border border-gray-300';
+                resultDiv.innerHTML = '⚠️ 請輸入一個數字';
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+            
+            let classification = '';
+            let explanation = '';
+            let bgColor = '';
+            let borderColor = '';
+            
+            // Simple classification logic
+            if (value.includes('π') || value.includes('√2') || value.includes('√3') || value.includes('√5') || value.includes('e')) {
+                classification = '無理數 (Irrational Number)';
+                explanation = '這是一個無理數，不能表示為兩個整數的比值，小數部分無限不循環。';
+                bgColor = 'bg-orange-100';
+                borderColor = 'border-orange-300';
+            } else if (value.includes('/')) {
+                classification = '有理數 (Rational Number)';
+                explanation = '這是一個有理數，可以表示為兩個整數的比值 p/q (其中 q ≠ 0)。';
+                bgColor = 'bg-green-100';
+                borderColor = 'border-green-300';
+            } else {
+                const num = parseFloat(value);
+                if (isNaN(num)) {
+                    classification = '輸入錯誤';
+                    explanation = '請輸入有效的數字格式。例如：3.14、√2、-5/7';
+                    bgColor = 'bg-gray-100';
+                    borderColor = 'border-gray-300';
+                } else if (num > 0 && Number.isInteger(num)) {
+                    classification = '自然數 (Natural Number)';
+                    explanation = '這是一個自然數，也是正整數，同時也屬於整數、有理數和實數。';
+                    bgColor = 'bg-red-100';
+                    borderColor = 'border-red-300';
+                } else if (Number.isInteger(num)) {
+                    classification = '整數 (Integer)';
+                    explanation = '這是一個整數，也屬於有理數和實數。';
+                    bgColor = 'bg-blue-100';
+                    borderColor = 'border-blue-300';
+                } else {
+                    classification = '有理數 (Rational Number)';
+                    explanation = '這是一個有理數，可以表示為分數形式。';
+                    bgColor = 'bg-green-100';
+                    borderColor = 'border-green-300';
+                }
+            }
+            
+            resultDiv.className = `mt-4 p-3 rounded-lg ${bgColor} ${borderColor} border`;
+            resultDiv.innerHTML = `
+                <div class="font-bold text-gray-800 mb-2">🎯 分析結果：${classification}</div>
+                <div class="text-gray-700 text-sm">${explanation}</div>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function showNumberInfo(number, type) {
+            const infoDiv = document.getElementById('numberInfo');
+            if (!infoDiv) return;
+            
+            let typeInfo = '';
+            let bgColor = '';
+            let borderColor = '';
+            
+            switch(type) {
+                case 'natural':
+                    typeInfo = '自然數 (Natural Number)';
+                    bgColor = 'bg-red-100';
+                    borderColor = 'border-red-300';
+                    break;
+                case 'integer':
+                    typeInfo = '整數 (Integer)';
+                    bgColor = 'bg-blue-100';
+                    borderColor = 'border-blue-300';
+                    break;
+                case 'rational':
+                    typeInfo = '有理數 (Rational Number)';
+                    bgColor = 'bg-green-100';
+                    borderColor = 'border-green-300';
+                    break;
+                case 'irrational':
+                    typeInfo = '無理數 (Irrational Number)';
+                    bgColor = 'bg-orange-100';
+                    borderColor = 'border-orange-300';
+                    break;
+            }
+            
+            infoDiv.className = `mt-4 p-3 rounded-lg ${bgColor} ${borderColor} border`;
+            infoDiv.innerHTML = `
+                <div class="font-bold text-gray-800 mb-2">🔍 數字：${number}</div>
+                <div class="text-gray-700 mb-2">📍 分類：${typeInfo}</div>
+                <div class="text-gray-600 text-sm">
+                    您點擊了數線上的 <strong>${number}</strong>，它屬於 <strong>${typeInfo}</strong>
+                </div>
+            `;
+            infoDiv.classList.remove('hidden');
+        }
+        
+        function checkQuizAnswer(selectedType) {
+            const currentQuestion = numberQuizQuestions[currentQuizIndex];
+            const resultDiv = document.getElementById('quizResult');
+            if (!resultDiv) return;
+            
+            const isCorrect = selectedType === currentQuestion.answer;
+            
+            if (isCorrect) {
+                quizScore++;
+                resultDiv.className = 'text-center bg-green-100 border border-green-300 rounded-lg p-3';
+                resultDiv.innerHTML = `
+                    <div class="text-green-600 font-bold mb-2">✅ 正確！太棒了！</div>
+                    <div class="text-gray-700 text-sm">${currentQuestion.explanation}</div>
+                `;
+            } else {
+                resultDiv.className = 'text-center bg-red-100 border border-red-300 rounded-lg p-3';
+                resultDiv.innerHTML = `
+                    <div class="text-red-600 font-bold mb-2">❌ 不正確，再試試看！</div>
+                    <div class="text-gray-700 text-sm">${currentQuestion.explanation}</div>
+                `;
+            }
+            
+            resultDiv.classList.remove('hidden');
+        }
+        
+        function nextQuizQuestion() {
+            currentQuizIndex = (currentQuizIndex + 1) % numberQuizQuestions.length;
+            const question = numberQuizQuestions[currentQuizIndex];
+            
+            const numberElement = document.getElementById('quizNumber');
+            const resultDiv = document.getElementById('quizResult');
+            
+            if (numberElement) numberElement.textContent = question.number;
+            if (resultDiv) resultDiv.classList.add('hidden');
+        }
+
+        // Quadratic function interactive features
+        function updateParabola() {
+            const aSlider = document.getElementById('aSlider');
+            const bSlider = document.getElementById('bSlider');
+            const cSlider = document.getElementById('cSlider');
+            
+            if (!aSlider || !bSlider || !cSlider) return;
+            
+            let a = parseFloat(aSlider.value);
+            const b = parseFloat(bSlider.value);
+            const c = parseFloat(cSlider.value);
+            
+            // Prevent a from being zero
+            if (Math.abs(a) < 0.1) a = a >= 0 ? 0.1 : -0.1;
+            
+            // Update display values
+            const aValue = document.getElementById('aValue');
+            const bValue = document.getElementById('bValue');
+            const cValue = document.getElementById('cValue');
+            
+            if (aValue) aValue.textContent = `a = ${a}`;
+            if (bValue) bValue.textContent = `b = ${b}`;
+            if (cValue) cValue.textContent = `c = ${c}`;
+            
+            // Calculate properties
+            const discriminant = b * b - 4 * a * c;
+            const vertexX = -b / (2 * a);
+            const vertexY = a * vertexX * vertexX + b * vertexX + c;
+            
+            // Update equation display
+            let equation = 'y = ';
+            if (a === 1) equation += 'x²';
+            else if (a === -1) equation += '-x²';
+            else equation += `${a}x²`;
+            
+            if (b !== 0) {
+                if (b > 0) equation += ' + ';
+                else equation += ' - ';
+                equation += Math.abs(b) === 1 ? 'x' : `${Math.abs(b)}x`;
+            }
+            
+            if (c !== 0) {
+                if (c > 0) equation += ' + ';
+                else equation += ' - ';
+                equation += Math.abs(c);
+            }
+            
+            const equationDisplay = document.getElementById('equationDisplay');
+            if (equationDisplay) equationDisplay.textContent = equation;
+            
+            // Generate parabola path
+            let pathData = 'M ';
+            const scale = 30; // pixels per unit
+            const centerX = 300;
+            const centerY = 200;
+            let first = true;
+            
+            for (let x = -8; x <= 8; x += 0.1) {
+                const y = a * x * x + b * x + c;
+                const screenX = centerX + x * scale;
+                const screenY = centerY - y * scale;
+                
+                if (screenY >= 0 && screenY <= 400) {
+                    if (first) {
+                        pathData += `${screenX},${screenY}`;
+                        first = false;
+                    } else {
+                        pathData += ` L ${screenX},${screenY}`;
+                    }
+                }
+            }
+            
+            const parabolaPath = document.getElementById('parabolaPath');
+            if (parabolaPath) parabolaPath.setAttribute('d', pathData);
+            
+            // Update vertex
+            const vertexScreenX = centerX + vertexX * scale;
+            const vertexScreenY = centerY - vertexY * scale;
+            const vertex = document.getElementById('vertex');
+            const vertexLabel = document.getElementById('vertexLabel');
+            
+            if (vertex && vertexScreenY >= 0 && vertexScreenY <= 400) {
+                vertex.setAttribute('cx', vertexScreenX);
+                vertex.setAttribute('cy', vertexScreenY);
+                vertex.style.display = 'block';
+            } else if (vertex) {
+                vertex.style.display = 'none';
+            }
+            
+            if (vertexLabel) {
+                vertexLabel.setAttribute('x', vertexScreenX + 10);
+                vertexLabel.setAttribute('y', vertexScreenY - 5);
+                vertexLabel.textContent = `(${vertexX.toFixed(1)}, ${vertexY.toFixed(1)})`;
+            }
+            
+            // Handle roots
+            const root1 = document.getElementById('root1');
+            const root2 = document.getElementById('root2');
+            const root1Label = document.getElementById('root1Label');
+            const root2Label = document.getElementById('root2Label');
+            
+            if (discriminant >= 0) {
+                const sqrt_discriminant = Math.sqrt(discriminant);
+                const rootValue1 = (-b + sqrt_discriminant) / (2 * a);
+                const rootValue2 = (-b - sqrt_discriminant) / (2 * a);
+                
+                // Show roots
+                const root1ScreenX = centerX + rootValue1 * scale;
+                const root2ScreenX = centerX + rootValue2 * scale;
+                
+                if (root1 && root1ScreenX >= 0 && root1ScreenX <= 600) {
+                    root1.setAttribute('cx', root1ScreenX);
+                    root1.setAttribute('cy', centerY);
+                    root1.style.display = 'block';
+                } else if (root1) {
+                    root1.style.display = 'none';
+                }
+                
+                if (Math.abs(rootValue1 - rootValue2) > 0.01) {
+                    if (root2 && root2ScreenX >= 0 && root2ScreenX <= 600) {
+                        root2.setAttribute('cx', root2ScreenX);
+                        root2.setAttribute('cy', centerY);
+                        root2.style.display = 'block';
+                    } else if (root2) {
+                        root2.style.display = 'none';
+                    }
+                    
+                    if (root1Label) {
+                        root1Label.setAttribute('x', root1ScreenX);
+                        root1Label.setAttribute('y', centerY - 15);
+                        root1Label.textContent = `x₁=${rootValue1.toFixed(1)}`;
+                        root1Label.style.display = 'block';
+                    }
+                    
+                    if (root2Label) {
+                        root2Label.setAttribute('x', root2ScreenX);
+                        root2Label.setAttribute('y', centerY - 15);
+                        root2Label.textContent = `x₂=${rootValue2.toFixed(1)}`;
+                        root2Label.style.display = 'block';
+                    }
+                    
+                    const rootsInfo = document.getElementById('rootsInfo');
+                    if (rootsInfo) rootsInfo.textContent = `實根：x₁ = ${rootValue1.toFixed(2)}, x₂ = ${rootValue2.toFixed(2)}`;
+                } else {
+                    if (root2) root2.style.display = 'none';
+                    
+                    if (root1Label) {
+                        root1Label.setAttribute('x', root1ScreenX);
+                        root1Label.setAttribute('y', centerY - 15);
+                        root1Label.textContent = `x=${rootValue1.toFixed(1)}`;
+                        root1Label.style.display = 'block';
+                    }
+                    
+                    if (root2Label) root2Label.style.display = 'none';
+                    
+                    const rootsInfo = document.getElementById('rootsInfo');
+                    if (rootsInfo) rootsInfo.textContent = `重根：x = ${rootValue1.toFixed(2)}`;
+                }
+            } else {
+                if (root1) root1.style.display = 'none';
+                if (root2) root2.style.display = 'none';
+                if (root1Label) root1Label.style.display = 'none';
+                if (root2Label) root2Label.style.display = 'none';
+                
+                const rootsInfo = document.getElementById('rootsInfo');
+                if (rootsInfo) rootsInfo.textContent = '無實根';
+            }
+            
+            // Update analysis
+            const discriminantInfo = document.getElementById('discriminantInfo');
+            const vertexInfo = document.getElementById('vertexInfo');
+            const openingDirection = document.getElementById('openingDirection');
+            const symmetryAxis = document.getElementById('symmetryAxis');
+            const yIntercept = document.getElementById('yIntercept');
+            const domainRange = document.getElementById('domainRange');
+            
+            if (discriminantInfo) discriminantInfo.textContent = `判別式 Δ = ${discriminant.toFixed(2)}`;
+            if (vertexInfo) vertexInfo.textContent = `頂點：(${vertexX.toFixed(2)}, ${vertexY.toFixed(2)})`;
+            if (openingDirection) openingDirection.textContent = `開口方向：${a > 0 ? '向上 ↑' : '向下 ↓'}`;
+            if (symmetryAxis) symmetryAxis.textContent = `對稱軸：x = ${vertexX.toFixed(2)}`;
+            if (yIntercept) yIntercept.textContent = `y截距：${c}`;
+            
+            const range = a > 0 ? `[${vertexY.toFixed(2)}, +∞)` : `(-∞, ${vertexY.toFixed(2)}]`;
+            if (domainRange) domainRange.textContent = `值域：${range}`;
+        }
+        
+        function setQuadratic(a, b, c) {
+            const aSlider = document.getElementById('aSlider');
+            const bSlider = document.getElementById('bSlider');
+            const cSlider = document.getElementById('cSlider');
+            
+            if (aSlider) aSlider.value = a;
+            if (bSlider) bSlider.value = b;
+            if (cSlider) cSlider.value = c;
+            
+            updateParabola();
+        }
+    </script>
+</body>
+</html>
